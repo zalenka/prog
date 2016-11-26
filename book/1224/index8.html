@@ -10,7 +10,7 @@
 	<meta name="author" content="">
 	<link rel="shortcut icon" href="../favicon.ico" />
 
-	<title>Spreminjanje, dodajanje in odstranjevanje elementov</title>
+	<title>Sprehod po indeksih tabele</title>
 
 	<!-- Bootstrap Core CSS -->
 	<link href="../css/bootstrap.min.css" rel="stylesheet">
@@ -20,6 +20,9 @@
 	<link href="../css/font-awesome.min.css" rel="stylesheet">
 
 	<link href="../css/style.css" rel="stylesheet">
+
+	<!-- Blockly editor -->
+	<link href="../blockly/local/editor.css" rel="stylesheet">
 
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -139,9 +142,30 @@
 			</div>
 		</div>
 
+		<!-- Modal (popup) window: Hint 1 -->
+		<div id="hint1" class="modal fade" role="dialog">
+			<div class="modal-dialog">
+
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">Namig</h4>
+					</div>
+					<div class="modal-body">
+						<p align="justify">Namesto da v telesu pogojnega stavka izpišeš trenutni indeks, izpiši element tabele <code>meseci</code> na tem indeksu.</p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Zapri</button>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
 		<!-- Modal (popup) window: Solution 1 -->
 		<div id="solution1" class="modal fade" role="dialog">
-			<div class="modal-dialog">
+			<div class="modal-dialog modal-lg">
 
 				<!-- Modal content-->
 				<div class="modal-content">
@@ -151,16 +175,7 @@
 					</div>
 					<div class="modal-body">
 <pre>
-&gt;&gt;&gt; t = [5, 6, 7]
-&gt;&gt;&gt; t.append(1)
-&gt;&gt;&gt; t
-[5, 6, 7, 1]
-&gt;&gt;&gt; t.remove(5)
-&gt;&gt;&gt; t
-[6, 7, 1]
-&gt;&gt;&gt; t[1:2] = []
-&gt;&gt;&gt; t
-[6, 1]
+<img src="img/1224-08-3.png">
 </pre>
 					</div>
 					<div class="modal-footer">
@@ -177,59 +192,312 @@
 				<div class="row">
 					<div class="col-md-6">
 <!-- Left column start -->
-<h1>Spreminjanje, dodajanje in odstranjevanje elementov</h1>
+<h1>Sprehod po indeksih tabele</h1>
 
-<p>
+<p align="justify">Pri sprehodu po tabeli včasih poleg trenutnega elementa potrebujemo tudi njegov indeks. V tem primeru lahko uporabimo sledečo zanko:
 <pre>
-&gt;&gt;&gt; t = [30, 50, 20, 80, 60, 70, 50]
-&gt;&gt;&gt; t[2:3] = []
-&gt;&gt;&gt; t
-[30, 50, 80, 60, 70, 50]
-&gt;&gt;&gt; t.remove(50)
-&gt;&gt;&gt; t
-[30, 80, 60, 70, 50]
-&gt;&gt;&gt; t.remove(20)
-Traceback (most recent call last):
-  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
-ValueError: list.remove(x): x not in list
+<img src="img/1224-08-1.png">
 </pre>
 </p>
+
+<p align="justify">Spremenljivka <code>indeks</code> prepotuje vse veljavne indekse tabele, od 0 do <nobr><code>dolžina tabele - 1</code></nobr>. Do trenutnega elementa tabele dostopamo z izrazom <code>tabela[indeks]</code>.</p>
+
+<p align="justify">Vrnimo se k naši Lizi. V katerih mesecih je Liza prodala več kot 300 kilogramov sladkarij? Da bo naloga enostavnejša, bomo najprej izpisali indekse mesecev (njihove zaporedne številke minus ena). Januar ima torej indeks 0, februar 1 itd. Indeksi mesecev ustrezajo indeksom v tabeli, saj element na indeksu 0 predstavlja prodajo v januarju, element na indeksu 1 prodajo v februarju itd.</p>
+<!-- Left column end -->
+					</div>
+					<div class="col-md-6">
+                        <br />
+<!-- Right column start -->
+<p align="justify">Zato lahko naš problem rešimo tako, da se sprehodimo po indeksih tabele in vsakokrat pogledamo element na trenutnem indeksu. Če je večji od 300, potem vemo, da je Liza v mesecu s tem indeksom prodala več kot 300 kg sladkarij, zato indeks izpišemo.</p>
 
 <h4>Vaja</h4>
 
 <div class="alert alert-info" role="alert">
-<p>
-	<span class="label label-primary"><b>1</b></span>
-	<span class="fa fa-star pull-right"></span>
-</p>
-<p align="justify">Kaj se izpiše po izvedbi sledečih stavkov? Najprej odgovori, nato preveri:
+
+<p align="justify">Popravi program tako, da bo izpisal <i>imena</i> mesecev, ko je bilo prodanih več kot 300 kilogramov sladkarij. Pomagaj si s sledečo tabelo:
 <pre>
-&gt;&gt;&gt; t = [5, 6, 7]
-&gt;&gt;&gt; t.append(1)
-&gt;&gt;&gt; t
-&gt;&gt;&gt; t.remove(5)
-&gt;&gt;&gt; t
-&gt;&gt;&gt; t[1:2] = []
-&gt;&gt;&gt; t
+<img src="img/1224-08-2.png">
 </pre>
 </p>
 <p>
+<button type="button" class="btn btn-info" data-toggle="modal" data-target="#hint1"><span class="fa fa-question"></span> Namig</button>
 <button type="button" class="btn btn-info" data-toggle="modal" data-target="#solution1"><span class="fa fa-check"></span> Rešitev</button>
 </p>
 </div>
-<!-- Left column end -->
-					</div>
-					<div class="col-md-6">
-						<br />
-<!-- Right column start -->
-<p align="justify">Preizkusi vse ukaze v interaktivnem tolmaču:</p>
-
-<div>
-<form>
-<p><textarea id="interactive"></textarea></p>
-</form>
-</div>
 <!-- Right column end -->
+					</div>
+                </div>
+				<div class="row">
+					<div class="col-md-12">
+<!-- Second row start -->
+<table width="100%">
+  <tr id="tabRow" height="1em">
+    <td id="tab1_blocks" class="tabon">...</td>
+    <td class="tabmin">&nbsp;</td>
+    <td id="tab1_python" class="taboff">Python</td>
+    <td class="tabmin">&nbsp;</td>
+    <td class="tabmax" align="right">
+      <button type="button" class="btn btn-primary"  id="runButton"><span class="fa fa-play"></span> Izvedi</button>
+      <button type="button" class="btn btn-primary"  id="trashButton">Počisti</button>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="5" id="content1_area"></td>
+  </tr>
+</table>
+<table width="100%">
+  <tr>
+    <td style="position:relative; height:350px;">
+      <div id="content1_blocks" class="content"></div>
+      <pre id="content1_python" class="content"></pre>
+    </td>
+  </tr>
+</table>
+<div style="margin-top:10px"><pre id="output"></pre></div>
+
+<xml id="toolbox" style="display: none">
+  <category name="{catLogic}" colour="200">
+    <block type="controls_if"></block>
+    <block type="logic_compare"></block>
+    <block type="logic_operation"></block>
+    <block type="logic_negate"></block>
+    <block type="logic_boolean"></block>
+  </category>
+  <category name="{catLoops}" colour="320">
+    <block type="controls_whileUntil"></block>
+    <block type="controls_for">
+      <value name="FROM">
+        <shadow type="math_number">
+          <field name="NUM">1</field>
+        </shadow>
+      </value>
+      <value name="TO">
+        <shadow type="math_number">
+          <field name="NUM">10</field>
+        </shadow>
+      </value>
+      <value name="BY">
+        <shadow type="math_number">
+          <field name="NUM">1</field>
+        </shadow>
+      </value>
+    </block>
+    <block type="controls_forEach"></block>
+    <block type="controls_flow_statements"></block>
+  </category>
+  <category name="{catMath}" colour="220">
+    <block type="math_number"></block>
+    <block type="math_arithmetic">
+      <value name="A">
+        <shadow type="math_number">
+          <field name="NUM">1</field>
+        </shadow>
+      </value>
+      <value name="B">
+        <shadow type="math_number">
+          <field name="NUM">1</field>
+        </shadow>
+      </value>
+    </block>
+    <block type="math_modulo">
+      <value name="DIVIDEND">
+        <shadow type="math_number">
+          <field name="NUM">64</field>
+        </shadow>
+      </value>
+      <value name="DIVISOR">
+        <shadow type="math_number">
+          <field name="NUM">10</field>
+        </shadow>
+      </value>
+    </block>
+    <block type="math_floor_division">
+      <value name="DIVIDEND">
+        <shadow type="math_number">
+          <field name="NUM">64</field>
+        </shadow>
+      </value>
+      <value name="DIVISOR">
+        <shadow type="math_number">
+          <field name="NUM">10</field>
+        </shadow>
+      </value>
+    </block>
+  </category>
+  <category name="{catLists}" colour="10">
+    <block type="lists_create_with">
+      <mutation items="0"></mutation>
+    </block>
+    <block type="lists_create_with"></block>
+    <block type="lists_length"></block>
+    <block type="lists_getIndex">
+      <value name="VALUE">
+        <block type="variables_get">
+          <field name="VAR">{listVariable}</field>
+        </block>
+      </value>
+    </block>
+    <block type="lists_getSublist">
+      <value name="LIST">
+        <block type="variables_get">
+          <field name="VAR">{listVariable}</field>
+        </block>
+      </value>
+    </block>
+  </category>
+  <category name="{catText}" colour="50">
+    <block type="text"></block>
+    <block type="text_join"></block>
+    <block type="text_print">
+      <value name="TEXT">
+        <shadow type="text">
+          <field name="TEXT">abc</field>
+        </shadow>
+      </value>
+    </block>
+    <block type="text_prompt_ext">
+      <value name="TEXT">
+        <shadow type="text">
+          <field name="TEXT">abc</field>
+        </shadow>
+      </value>
+    </block>
+  </category>
+  <sep></sep>
+  <category name="{catVariables}" colour="280" custom="VARIABLE"></category>
+</xml>
+
+<xml id="workspace" style="display: none">
+  <block type="variables_set" id="10" x="10" y="10">
+    <field name="VAR">prodaja</field>
+    <value name="VALUE">
+      <block type="lists_create_with" id="11" inline="true">
+        <mutation items="12"></mutation>
+        <value name="ADD0">
+          <block type="math_number" id="12">
+            <field name="NUM">182</field>
+          </block>
+        </value>
+        <value name="ADD1">
+          <block type="math_number" id="13">
+            <field name="NUM">250</field>
+          </block>
+        </value>
+        <value name="ADD2">
+          <block type="math_number" id="14">
+            <field name="NUM">225</field>
+          </block>
+        </value>
+        <value name="ADD3">
+          <block type="math_number" id="15">
+            <field name="NUM">315</field>
+          </block>
+        </value>
+        <value name="ADD4">
+          <block type="math_number" id="16">
+            <field name="NUM">328</field>
+          </block>
+        </value>
+        <value name="ADD5">
+          <block type="math_number" id="17">
+            <field name="NUM">160</field>
+          </block>
+        </value>
+        <value name="ADD6">
+          <block type="math_number" id="18">
+            <field name="NUM">51</field>
+          </block>
+        </value>
+        <value name="ADD7">
+          <block type="math_number" id="19">
+            <field name="NUM">36</field>
+          </block>
+        </value>
+        <value name="ADD8">
+          <block type="math_number" id="20">
+            <field name="NUM">340</field>
+          </block>
+        </value>
+        <value name="ADD9">
+          <block type="math_number" id="21">
+            <field name="NUM">280</field>
+          </block>
+        </value>
+        <value name="ADD10">
+          <block type="math_number" id="22">
+            <field name="NUM">378</field>
+          </block>
+        </value>
+        <value name="ADD11">
+          <block type="math_number" id="23">
+            <field name="NUM">320</field>
+          </block>
+        </value>
+      </block>
+    </value>
+    <next>
+      <block type="controls_for" id="24">
+        <field name="VAR">indeksMeseca</field>
+        <value name="FROM">
+          <shadow type="math_number" id="25">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+        <value name="TO">
+          <shadow type="math_number" id="26">
+            <field name="NUM">10</field>
+          </shadow>
+          <block type="lists_length" id="27">
+            <value name="VALUE">
+              <block type="variables_get" id="28">
+                <field name="VAR">prodaja</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <value name="BY">
+          <shadow type="math_number" id="29">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+        <statement name="DO">
+          <block type="controls_if" id="30">
+            <value name="IF0">
+              <block type="logic_compare" id="31">
+                <field name="OP">GT</field>
+                <value name="A">
+                  <block type="variables_get" id="32">
+                    <field name="VAR">prodajaMesec</field>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="math_number" id="33">
+                    <field name="NUM">300</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO0">
+              <block type="text_print" id="34">
+                <value name="TEXT">
+                  <shadow type="text" id="35">
+                    <field name="TEXT">abc</field>
+                  </shadow>
+                  <block type="variables_get" id="36">
+                    <field name="VAR">indeksMeseca</field>
+                  </block>
+                </value>
+              </block>
+            </statement>
+          </block>
+        </statement>
+      </block>
+    </next>
+  </block>
+</xml>
+
+<p align="justify">Gornji program izpiše števila 3, 4, 8, 10 in 11, ki predstavljajo mesece april, maj, september, november in december.</p>
+<!-- Second row end -->
 					</div>
 				</div>
 			</div>
@@ -238,26 +506,26 @@ ValueError: list.remove(x): x not in list
 			<div class="col-md-12">
 				<center>
 				<ul class="pagination pagination-sm">
-					<li><a href="../1203/index.html" aria-label="Previous Unit"><span aria-hidden="true">&laquo;</span></a></li>
-					<li><a href="../1204/index7.html" aria-label="Previous Page"><span aria-hidden="true">&#x2039;</span></a></li>
-					<li><a href="../1204/index.html">55</a></li>
-					<li><a href="../1204/index1.html">56</a></li>
-					<li><a href="../1204/index2.html">57</a></li>
-					<li><a href="../1204/index3.html">58</a></li>
-					<li><a href="../1204/index4.html">59</a></li>
-					<li><a href="../1204/index5.html">60</a></li>
-					<li><a href="../1204/index6.html">61</a></li>
-					<li><a href="../1204/index7.html">62</a></li>
-					<li class="active"><a href="#">63</a></li>
-					<li><a href="../1204/index9.html">64</a></li>
-					<li><a href="../1204/index10.html">65</a></li>
-					<li><a href="../1204/index11.html">66</a></li>
-					<li><a href="../1204/index12.html">67</a></li>
-					<li><a href="../1204/index13.html">68</a></li>
-					<li><a href="../1204/index14.html">69</a></li>
-					<li><a href="../1204/index15.html">70</a></li>
-					<li><a href="../1204/index9.html" aria-label="Next Page"><span aria-hidden="true">&#x203A;</span></a></li>
-					<li><a href="../1205/index.html" aria-label="Next Unit"><span aria-hidden="true">&raquo;</span></a></li>
+					<li><a href="../1223/index.html" aria-label="Previous Unit"><span aria-hidden="true">&laquo;</span></a></li>
+					<li><a href="../1224/index7.html" aria-label="Previous Page"><span aria-hidden="true">&#x2039;</span></a></li>
+					<li><a href="../1224/index.html">37</a></li>
+					<li><a href="../1224/index1.html">38</a></li>
+					<li><a href="../1224/index2.html">39</a></li>
+					<li><a href="../1224/index3.html">40</a></li>
+					<li><a href="../1224/index4.html">41</a></li>
+					<li><a href="../1224/index5.html">42</a></li>
+					<li><a href="../1224/index6.html">43</a></li>
+					<li><a href="../1224/index7.html">44</a></li>
+					<li class="active"><a href="#">45</a></li>
+					<li><a href="../1224/index9.html">46</a></li>
+					<li><a href="../1224/index10.html">47</a></li>
+					<li><a href="../1224/index11.html">48</a></li>
+					<li><a href="../1224/index12.html">49</a></li>
+					<li><a href="../1224/index13.html">50</a></li>
+					<li><a href="../1224/index14.html">51</a></li>
+					<li><a href="../1224/index15.html">52</a></li>
+					<li><a href="../1224/index9.html" aria-label="Next Page"><span aria-hidden="true">&#x203A;</span></a></li>
+					<li><a href="../1225/index.html" aria-label="Next Unit"><span aria-hidden="true">&raquo;</span></a></li>
 				</ul>
 				</center>
 			</div>
@@ -290,16 +558,23 @@ ValueError: list.remove(x): x not in list
 	});
 	</script>
 
-	<!-- eXe Project -->
-	<script src="../js/exe/common.js"></script>
-
-	<!-- Skulpt and CodeMirror -->
-	<script src="../js/skulpt/codemirrorepl.js"></script>
-	<script src="../js/skulpt/repl.js"></script>
-	<script src="../js/skulpt/skulpt.js"></script>
-	<script src="../js/skulpt/skulpt-stdlib.js"></script>
-	<script src="../js/skulpt/python.js"></script>
-	<script>Sk.python3 = true;</script>
+<!-- Blockly -->
+<script src="../blockly/storage.js"></script>
+<script src="../blockly/blockly_compressed.js"></script>
+<script src="../blockly/blocks_compressed.js"></script>
+<script src="../blockly/javascript_compressed.js"></script>
+<script src="../blockly/python_compressed.js"></script>
+<script src="../blockly/local/custom_blocks.js"></script>
+<script src="index8.js"></script>
+<script>
+  var elementID = "";
+  $("#runButton").click(function() {
+    elementID = "#output";
+  });
+  window.alert = function(msg) {
+    $(elementID).append(msg + "\n");
+  };
+</script>
 
 
 <!-- CookieCuttr -->

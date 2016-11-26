@@ -10,7 +10,7 @@
 	<meta name="author" content="">
 	<link rel="shortcut icon" href="../favicon.ico" />
 
-	<title>*Jedrnata definicija tabele</title>
+	<title>Sprehod po indeksih tabele</title>
 
 	<!-- Bootstrap Core CSS -->
 	<link href="../css/bootstrap.min.css" rel="stylesheet">
@@ -20,6 +20,9 @@
 	<link href="../css/font-awesome.min.css" rel="stylesheet">
 
 	<link href="../css/style.css" rel="stylesheet">
+
+	<!-- Blockly editor -->
+	<link href="../blockly/local/editor.css" rel="stylesheet">
 
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -139,132 +142,354 @@
 			</div>
 		</div>
 
-		<!-- Modal (popup) window: Solution 1 -->
-		<div id="solution1" class="modal fade" role="dialog">
-			<div class="modal-dialog">
-
-				<!-- Modal content-->
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h4 class="modal-title">Rešitev</h4>
-					</div>
-					<div class="modal-body">
-<pre>
-tabela = [i * i for i in range(1, 11)]
-print(tabela)
-</pre>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">Zapri</button>
-					</div>
-				</div>
-
-			</div>
-		</div>
-
-		<!-- Modal (popup) window: Solution 2 -->
-		<div id="solution2" class="modal fade" role="dialog">
-			<div class="modal-dialog">
-
-				<!-- Modal content-->
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h4 class="modal-title">Rešitev</h4>
-					</div>
-					<div class="modal-body">
-<pre>
-tabela = [[j for j in range(1, i+1)] for i in range(1, 11)]
-print(tabela)
-</pre>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">Zapri</button>
-					</div>
-				</div>
-
-			</div>
-		</div>
-
 		<!-- Page Content -->
 		<div id="page-content-wrapper">
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-md-6">
 <!-- Left column start -->
-<h1>*Jedrnata definicija tabele</h1>
+<h1>Sprehod po indeksih tabele</h1>
 
-<p align="justify">V pythonu se pogosto uporablja t.i. <i>jedrnata definicija tabele</i> (<i>ang. list comprehension</i>). Tabelo na jedrnati način izdelamo takole:
-<pre>
-tabela = [<i>izraz</i> for <i>števec</i> in <i>obseg</i> if <i>pogoj</i>]
-</pre>
-</p>
+<p align="justify">Kako bi določili indeks meseca, v katerem je bila prodaja najnižja? Podobno kot pri računanju najmanjše <i>vrednosti</i> v tabeli si tudi tokrat pomagamo z dodatno spremenljivko, le da ta vsebuje <i>indeks</i> najmanjšega elementa izmed vseh tistih elementov, po katerih smo se že sprehodili.</p> 
 
-<p align="justify">Del, ki se prične z besedo <code>if</code>, ni obvezen. Gornja koda je enakovredna sledeči, a je krajša in elegantnejša:
-<pre>
-tabela = []
-for <i>števec</i> in <i>obseg</i>:
-  if <i>pogoj</i>:
-    tabela.append(<i>izraz</i>)
-</pre>
-</p>
+<p align="justify">Sicer pa je postopek reševanja zelo podoben. Recimo, da indeks doslej najmanjšega elementa hranimo v spremenljivki <code>indeksMin</code>. Če je element na trenutnem indeksu manjši od elementa na indeksu <code>indeksMin</code>, potem spremenljivki <code>indeksMin</code> priredimo trenutni indeks. Tako dosežemo, da bo spremenljivka <code>indeksMin</code> po vsakem koraku zanke vsebovala indeks doslej najmanjšega elementa, po koncu zanke pa indeks najmanjšega elementa celotne tabele.</p>
 
-<p align="justify">Oglejmo si nekaj primerov:</p>
+<h4>Vaja</h4>
 
-<div>
-<form>
-<p>
-<textarea id="code"># Tabela, sestavljena iz desetih elementov 3
-tabela = [3 for i in range(10)]
-print(tabela)
-
-# Tabela z elementi 1, 2, ... , 10
-# Spremenljivka i potuje od 0 do 9, zato ji, ko
-# tvorimo posamezne elemente, prištejemo 1.
-tabela = [i + 1 for i in range(10)]
-print(tabela)
-
-# Tabela s prvimi desetimi večkratniki števila 3
-tabela = [i for i in range(3, 31) if i % 3 == 0]
-# ali (učinkoviteje)
-tabela = [3 * i for i in range(1, 11)]
-print(tabela)</textarea>
-</p>
-<p>
-<a href="#" class="btn btn-primary"  onclick="runit()"><span class="fa fa-play"></span> Izvedi</a>
-<a href="#" class="btn btn-primary"  onclick="clearit()">Počisti</a>
-</p>
-</form>
+<div class="alert alert-info" role="alert">
+<p align="justify">Po korakih »izvedi« spodnji program s svinčnikom in papirjem.</p>
 </div>
-<pre id="output"></pre>
 <!-- Left column end -->
 					</div>
 					<div class="col-md-6">
 <!-- Right column start -->
-<h4>Vaja</h4>
+<h4>V razmislek</h4>
 
 <div class="alert alert-info" role="alert">
-<p align="justify">Jedrnato definiraj tabelo s kvadrati števil od 1 do 10 (torej 1, 4, 9, ... , 100).</p>
-<p>
-<button type="button" class="btn btn-info" data-toggle="modal" data-target="#solution1"><span class="fa fa-check"></span> Rešitev</button>
-</p>
-</div>
-
-<h4>Vaja</h4>
-
-<div class="alert alert-danger" role="alert">
-<p align="justify">Jedrnato definiraj tabelo sledeče oblike:
+<p align="justify">Program za iskanje indeksa najmanjšega elementa v tabeli bi deloval tudi v primeru, če bi se sprehodili od drugega elementa do zadnjega:
 <pre>
-[[1], [1, 2], [1, 2, 3], ..., [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]]
+<img src="img/1224-09-1.png">
 </pre>
-</p>
-<p align="justify">Če se ti naloga zdi pretežka, poskusi najprej zgraditi takšno tabelo z zanko in funkcijo <code>append</code>.</p>
-<p>
-<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#solution2"><span class="fa fa-check"></span> Rešitev</button>
-</p>
+Zakaj?</p>
 </div>
 <!-- Right column end -->
+					</div>
+                </div>
+				<div class="row">
+					<div class="col-md-12">
+<!-- Second row start -->
+<table width="100%">
+  <tr id="tabRow" height="1em">
+    <td id="tab1_blocks" class="tabon">...</td>
+    <td class="tabmin">&nbsp;</td>
+    <td id="tab1_python" class="taboff">Python</td>
+    <td class="tabmin">&nbsp;</td>
+    <td class="tabmax" align="right">
+      <button type="button" class="btn btn-primary"  id="runButton"><span class="fa fa-play"></span> Izvedi</button>
+      <button type="button" class="btn btn-primary"  id="trashButton">Počisti</button>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="5" id="content1_area"></td>
+  </tr>
+</table>
+<table width="100%">
+  <tr>
+    <td style="position:relative; height:350px;">
+      <div id="content1_blocks" class="content"></div>
+      <pre id="content1_python" class="content"></pre>
+    </td>
+  </tr>
+</table>
+<div style="margin-top:10px"><pre id="output"></pre></div>
+
+<xml id="toolbox" style="display: none">
+  <category name="{catLogic}" colour="200">
+    <block type="controls_if"></block>
+    <block type="logic_compare"></block>
+    <block type="logic_operation"></block>
+    <block type="logic_negate"></block>
+    <block type="logic_boolean"></block>
+  </category>
+  <category name="{catLoops}" colour="320">
+    <block type="controls_whileUntil"></block>
+    <block type="controls_for">
+      <value name="FROM">
+        <shadow type="math_number">
+          <field name="NUM">1</field>
+        </shadow>
+      </value>
+      <value name="TO">
+        <shadow type="math_number">
+          <field name="NUM">10</field>
+        </shadow>
+      </value>
+      <value name="BY">
+        <shadow type="math_number">
+          <field name="NUM">1</field>
+        </shadow>
+      </value>
+    </block>
+    <block type="controls_forEach"></block>
+    <block type="controls_flow_statements"></block>
+  </category>
+  <category name="{catMath}" colour="220">
+    <block type="math_number"></block>
+    <block type="math_arithmetic">
+      <value name="A">
+        <shadow type="math_number">
+          <field name="NUM">1</field>
+        </shadow>
+      </value>
+      <value name="B">
+        <shadow type="math_number">
+          <field name="NUM">1</field>
+        </shadow>
+      </value>
+    </block>
+    <block type="math_modulo">
+      <value name="DIVIDEND">
+        <shadow type="math_number">
+          <field name="NUM">64</field>
+        </shadow>
+      </value>
+      <value name="DIVISOR">
+        <shadow type="math_number">
+          <field name="NUM">10</field>
+        </shadow>
+      </value>
+    </block>
+    <block type="math_floor_division">
+      <value name="DIVIDEND">
+        <shadow type="math_number">
+          <field name="NUM">64</field>
+        </shadow>
+      </value>
+      <value name="DIVISOR">
+        <shadow type="math_number">
+          <field name="NUM">10</field>
+        </shadow>
+      </value>
+    </block>
+  </category>
+  <category name="{catLists}" colour="10">
+    <block type="lists_create_with">
+      <mutation items="0"></mutation>
+    </block>
+    <block type="lists_create_with"></block>
+    <block type="lists_length"></block>
+    <block type="lists_getIndex">
+      <value name="VALUE">
+        <block type="variables_get">
+          <field name="VAR">{listVariable}</field>
+        </block>
+      </value>
+    </block>
+    <block type="lists_getSublist">
+      <value name="LIST">
+        <block type="variables_get">
+          <field name="VAR">{listVariable}</field>
+        </block>
+      </value>
+    </block>
+  </category>
+  <category name="{catText}" colour="50">
+    <block type="text"></block>
+    <block type="text_join"></block>
+    <block type="text_print">
+      <value name="TEXT">
+        <shadow type="text">
+          <field name="TEXT">abc</field>
+        </shadow>
+      </value>
+    </block>
+    <block type="text_prompt_ext">
+      <value name="TEXT">
+        <shadow type="text">
+          <field name="TEXT">abc</field>
+        </shadow>
+      </value>
+    </block>
+  </category>
+  <sep></sep>
+  <category name="{catVariables}" colour="280" custom="VARIABLE"></category>
+</xml>
+
+<xml id="workspace" style="display: none">
+  <block type="variables_set" id="10" x="10" y="10">
+    <field name="VAR">prodaja</field>
+    <value name="VALUE">
+      <block type="lists_create_with" id="11" inline="true">
+        <mutation items="12"></mutation>
+        <value name="ADD0">
+          <block type="math_number" id="12">
+            <field name="NUM">182</field>
+          </block>
+        </value>
+        <value name="ADD1">
+          <block type="math_number" id="13">
+            <field name="NUM">250</field>
+          </block>
+        </value>
+        <value name="ADD2">
+          <block type="math_number" id="14">
+            <field name="NUM">225</field>
+          </block>
+        </value>
+        <value name="ADD3">
+          <block type="math_number" id="15">
+            <field name="NUM">315</field>
+          </block>
+        </value>
+        <value name="ADD4">
+          <block type="math_number" id="16">
+            <field name="NUM">328</field>
+          </block>
+        </value>
+        <value name="ADD5">
+          <block type="math_number" id="17">
+            <field name="NUM">160</field>
+          </block>
+        </value>
+        <value name="ADD6">
+          <block type="math_number" id="18">
+            <field name="NUM">51</field>
+          </block>
+        </value>
+        <value name="ADD7">
+          <block type="math_number" id="19">
+            <field name="NUM">36</field>
+          </block>
+        </value>
+        <value name="ADD8">
+          <block type="math_number" id="20">
+            <field name="NUM">340</field>
+          </block>
+        </value>
+        <value name="ADD9">
+          <block type="math_number" id="21">
+            <field name="NUM">280</field>
+          </block>
+        </value>
+        <value name="ADD10">
+          <block type="math_number" id="22">
+            <field name="NUM">378</field>
+          </block>
+        </value>
+        <value name="ADD11">
+          <block type="math_number" id="23">
+            <field name="NUM">320</field>
+          </block>
+        </value>
+      </block>
+    </value>
+    <next>
+      <block type="variables_set" id="24">
+        <field name="VAR">indeksMin</field>
+        <value name="VALUE">
+          <block type="math_number" id="25">
+            <field name="NUM">0</field>
+          </block>
+        </value>
+        <next>
+          <block type="controls_for" id="26">
+            <field name="VAR">indeks</field>
+            <value name="FROM">
+              <shadow type="math_number" id="27">
+                <field name="NUM">1</field>
+              </shadow>
+            </value>
+            <value name="TO">
+              <shadow type="math_number" id="28">
+                <field name="NUM">10</field>
+              </shadow>
+              <block type="lists_length" id="29">
+                <value name="VALUE">
+                  <block type="variables_get" id="30">
+                    <field name="VAR">tabela</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <value name="BY">
+              <shadow type="math_number" id="31">
+                <field name="NUM">1</field>
+              </shadow>
+            </value>
+            <statement name="DO">
+              <block type="controls_if" id="32">
+                <value name="IF0">
+                  <block type="logic_compare" id="33">
+                    <field name="OP">LT</field>
+                    <value name="A">
+                      <block type="lists_getIndex" id="34">
+                        <mutation statement="false" at="true"></mutation>
+                        <field name="MODE">GET</field>
+                        <field name="WHERE">FROM_START</field>
+                        <value name="VALUE">
+                          <block type="variables_get" id="35">
+                            <field name="VAR">tabela</field>
+                          </block>
+                        </value>
+                        <value name="AT">
+                          <block type="variables_get" id="36">
+                            <field name="VAR">indeks</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="lists_getIndex" id="37">
+                        <mutation statement="false" at="true"></mutation>
+                        <field name="MODE">GET</field>
+                        <field name="WHERE">FROM_START</field>
+                        <value name="VALUE">
+                          <block type="variables_get" id="38">
+                            <field name="VAR">tabela</field>
+                          </block>
+                        </value>
+                        <value name="AT">
+                          <block type="variables_get" id="39">
+                            <field name="VAR">indeksMin</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO0">
+                  <block type="variables_set" id="40">
+                    <field name="VAR">indeksMin</field>
+                    <value name="VALUE">
+                      <block type="variables_get" id="41">
+                        <field name="VAR">indeks</field>
+                      </block>
+                    </value>
+                  </block>
+                </statement>
+              </block>
+            </statement>
+            <next>
+              <block type="text_print" id="42">
+                <value name="TEXT">
+                  <shadow type="text" id="43">
+                    <field name="TEXT">abc</field>
+                  </shadow>
+                  <block type="variables_get" id="44">
+                    <field name="VAR">indeksMin</field>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </next>
+  </block>
+</xml>
+
+<p align="justify">Najmanjši element tabele ima indeks 7, kar pomeni, da je Liza najmanj sladkarij prodala v avgustu.</p>
+<!-- Second row end -->
 					</div>
 				</div>
 			</div>
@@ -273,26 +498,26 @@ print(tabela)</textarea>
 			<div class="col-md-12">
 				<center>
 				<ul class="pagination pagination-sm">
-					<li><a href="../1203/index.html" aria-label="Previous Unit"><span aria-hidden="true">&laquo;</span></a></li>
-					<li><a href="../1204/index8.html" aria-label="Previous Page"><span aria-hidden="true">&#x2039;</span></a></li>
-					<li><a href="../1204/index.html">55</a></li>
-					<li><a href="../1204/index1.html">56</a></li>
-					<li><a href="../1204/index2.html">57</a></li>
-					<li><a href="../1204/index3.html">58</a></li>
-					<li><a href="../1204/index4.html">59</a></li>
-					<li><a href="../1204/index5.html">60</a></li>
-					<li><a href="../1204/index6.html">61</a></li>
-					<li><a href="../1204/index7.html">62</a></li>
-					<li><a href="../1204/index8.html">63</a></li>
-					<li class="active"><a href="#">64</a></li>
-					<li><a href="../1204/index10.html">65</a></li>
-					<li><a href="../1204/index11.html">66</a></li>
-					<li><a href="../1204/index12.html">67</a></li>
-					<li><a href="../1204/index13.html">68</a></li>
-					<li><a href="../1204/index14.html">69</a></li>
-					<li><a href="../1204/index15.html">70</a></li>
-					<li><a href="../1204/index10.html" aria-label="Next Page"><span aria-hidden="true">&#x203A;</span></a></li>
-					<li><a href="../1205/index.html" aria-label="Next Unit"><span aria-hidden="true">&raquo;</span></a></li>
+					<li><a href="../1223/index.html" aria-label="Previous Unit"><span aria-hidden="true">&laquo;</span></a></li>
+					<li><a href="../1224/index8.html" aria-label="Previous Page"><span aria-hidden="true">&#x2039;</span></a></li>
+					<li><a href="../1224/index.html">37</a></li>
+					<li><a href="../1224/index1.html">38</a></li>
+					<li><a href="../1224/index2.html">39</a></li>
+					<li><a href="../1224/index3.html">40</a></li>
+					<li><a href="../1224/index4.html">41</a></li>
+					<li><a href="../1224/index5.html">42</a></li>
+					<li><a href="../1224/index6.html">43</a></li>
+					<li><a href="../1224/index7.html">44</a></li>
+					<li><a href="../1224/index8.html">45</a></li>
+					<li class="active"><a href="#">46</a></li>
+					<li><a href="../1224/index10.html">47</a></li>
+					<li><a href="../1224/index11.html">48</a></li>
+					<li><a href="../1224/index12.html">49</a></li>
+					<li><a href="../1224/index13.html">50</a></li>
+					<li><a href="../1224/index14.html">51</a></li>
+					<li><a href="../1224/index15.html">52</a></li>
+					<li><a href="../1224/index10.html" aria-label="Next Page"><span aria-hidden="true">&#x203A;</span></a></li>
+					<li><a href="../1225/index.html" aria-label="Next Unit"><span aria-hidden="true">&raquo;</span></a></li>
 				</ul>
 				</center>
 			</div>
@@ -325,55 +550,22 @@ print(tabela)</textarea>
 	});
 	</script>
 
-	<!-- eXe Project -->
-	<script src="../js/exe/common.js"></script>
-
-	<!-- Skulpt and CodeMirror -->
-	<script src="../js/skulpt/codemirrorepl.js"></script>
-	<script src="../js/skulpt/repl.js"></script>
-	<script src="../js/skulpt/skulpt.js"></script>
-	<script src="../js/skulpt/skulpt-stdlib.js"></script>
-	<script src="../js/skulpt/python.js"></script>
-	<script>Sk.python3 = true;</script>
-
-<script type="text/javascript">
-function outf(text) {
-  var mypre = document.getElementById("output");
-  mypre.innerHTML = mypre.innerHTML + text;
-}
-function builtinRead(x) {
-  if (Sk.builtinFiles === undefined || Sk.builtinFiles["files"][x] === undefined)
-    throw "File not found: '" + x + "'";
-  return Sk.builtinFiles["files"][x];
-}
-function runit() {
-    var prog = editor.getValue();
-    var mypre = document.getElementById("output");
-    mypre.innerHTML = '';
-    Sk.canvas = "mycanvas";
-    Sk.pre = "output";
-    Sk.configure({output:outf, read:builtinRead});
-    try {
-        eval(Sk.importMainWithBody("<stdin>",false,prog));
-    }
-    catch(e) {
-        alert(e.toString())
-    }
-}
-function clearit() {
-    var mypre = document.getElementById("output");
-    mypre.innerHTML = '';
-}
-</script>
-
+<!-- Blockly -->
+<script src="../blockly/storage.js"></script>
+<script src="../blockly/blockly_compressed.js"></script>
+<script src="../blockly/blocks_compressed.js"></script>
+<script src="../blockly/javascript_compressed.js"></script>
+<script src="../blockly/python_compressed.js"></script>
+<script src="../blockly/local/custom_blocks.js"></script>
+<script src="index9.js"></script>
 <script>
-var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
-  lineNumbers: true,
-  matchBrackets: true,
-  mode: "python",
-  theme: "mbo"
-});
-editor.setSize('100%', 260);
+  var elementID = "";
+  $("#runButton").click(function() {
+    elementID = "#output";
+  });
+  window.alert = function(msg) {
+    $(elementID).append(msg + "\n");
+  };
 </script>
 
 

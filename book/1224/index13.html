@@ -21,6 +21,9 @@
 
 	<link href="../css/style.css" rel="stylesheet">
 
+	<!-- Blockly editor -->
+	<link href="../blockly/local/editor.css" rel="stylesheet">
+
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 	<!--[if lt IE 9]>
@@ -162,7 +165,7 @@
 
 		<!-- Modal (popup) window: Solution 5 -->
 		<div id="solution5" class="modal fade" role="dialog">
-			<div class="modal-dialog">
+			<div class="modal-dialog modal-lg">
 
 				<!-- Modal content-->
 				<div class="modal-content">
@@ -172,14 +175,7 @@
 					</div>
 					<div class="modal-body">
 <pre>
-# Program postavi vse negativne elemente v podani tabeli na 0.
-tabela = [-6, 10, 7, -11, 0, 3, 10, -5]
-
-for ix in range(len(tabela)):
-  if tabela[ix] &lt; 0:
-    tabela[ix] = 0
-
-print(tabela)
+<img src="img/1224-13-5.png">
 </pre>
 					</div>
 					<div class="modal-footer">
@@ -222,7 +218,7 @@ print(tabela)
 						<h4 class="modal-title">Namig</h4>
 					</div>
 					<div class="modal-body">
-						<p align="justify">Če se želiš sprehoditi po padajočih vrednostih, moraš v <code>range(...)</code> dodati še tretji parameter, in sicer −1.</p>
+						<p align="justify">Če se želiš sprehoditi po padajočih vrednostih, moraš v <code>za (...)</code> dodati še tretji parameter, in sicer −1.</p>
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default" data-dismiss="modal">Zapri</button>
@@ -234,7 +230,7 @@ print(tabela)
 
 		<!-- Modal (popup) window: Solution 6 -->
 		<div id="solution6" class="modal fade" role="dialog">
-			<div class="modal-dialog">
+			<div class="modal-dialog modal-lg">
 
 				<!-- Modal content-->
 				<div class="modal-content">
@@ -244,22 +240,7 @@ print(tabela)
 					</div>
 					<div class="modal-body">
 <pre>
-# Program izpiše indeks zadnjega negativnega elementa v podani tabeli
-# oziroma -1, če takšnega elementa v tabeli ni.
-tabela = [-6, 10, 7, -11, 0] # izpiše: 3
-#tabela = [6, 10, 7, 11, 0] # izpiše: -1
-
-zadnjiIndeks = -1
-for indeks in range(len(tabela) - 1, -1, -1):
-  if tabela[indeks] &lt; 0:
-    # Našli smo negativni element. Shranimo njegov indeks in prekinemo
-    # zanko.
-    zadnjiIndeks = indeks
-    break
-
-# Če v tabeli ni nobenega negativnega elementa, vrednost spremenljivke
-# zadnjiIndeks ostane -1.
-print(zadnjiIndeks)
+<img src="img/1224-13-6.png">
 </pre>
 					</div>
 					<div class="modal-footer">
@@ -293,7 +274,7 @@ print(zadnjiIndeks)
 
 		<!-- Modal (popup) window: Solution 7 -->
 		<div id="solution7" class="modal fade" role="dialog">
-			<div class="modal-dialog">
+			<div class="modal-dialog modal-lg">
 
 				<!-- Modal content-->
 				<div class="modal-content">
@@ -303,26 +284,7 @@ print(zadnjiIndeks)
 					</div>
 					<div class="modal-body">
 <pre>
-# Program poišče drugi največji element v tabeli ob predpostavki, da so
-# vsa števila v tabeli pozitivna in da tabela vsebuje vsaj dva različna
-# elementa.
-tabela = [100, 50, 70, 100, 70, 30, 60]
-
-# Poišči največji element.
-najvecji = 0
-for element in tabela:
-  if element &gt; najvecji:
-    najvecji = element
-
-# Poišči drugi največji element. To je element, ki je večji od vseh razen
-# od največjega.
-drugiNajvecji = 0
-for element in tabela:
-  if (element &lt; najvecji and
-      element &gt; drugiNajvecji):
-    drugiNajvecji = element
-
-print(drugiNajvecji)
+<img src="img/1224-13-7.png">
 </pre>
 					</div>
 					<div class="modal-footer">
@@ -346,20 +308,17 @@ print(drugiNajvecji)
 	<span class="label label-primary"><b>5</b></span>
 	<span class="fa fa-star pull-right"></span>
 </p>
-<p align="justify">Napiši program, ki vse negativne elemente v podani tabeli postavi na 0. Na primer, tabelo
-<pre>
-tabela = [-6, 10, 7, -11, 0, 3, 10, -5]
-</pre>
-naj program spremeni v tabelo
-<pre>
-tabela = [0, 10, 7, 0, 0, 3, 10, 0]
-</pre></p>
+<p align="justify">Napiši program, ki vse negativne elemente v podani tabeli postavi na 0. Na primer, tabelo <code>[-6, 10, 7, -11, 0, 3, 10, -5]</code> naj program spremeni v tabelo <code>[0, 10, 7, 0, 0, 3, 10, 0]</code></p>
 <p>
 <button type="button" class="btn btn-info" data-toggle="modal" data-target="#hint5"><span class="fa fa-question"></span> Namig</button>
 <button type="button" class="btn btn-info" data-toggle="modal" data-target="#solution5"><span class="fa fa-check"></span> Rešitev</button>
 </p>
 </div>
-
+<!-- Left column end -->
+					</div>
+					<div class="col-md-6">
+						<br /><br />
+<!-- Right column start -->
 <div class="alert alert-info" role="alert">
 <p>
 	<span class="label label-primary"><b>6</b></span>
@@ -372,38 +331,170 @@ tabela = [0, 10, 7, 0, 0, 3, 10, 0]
 <button type="button" class="btn btn-info" data-toggle="modal" data-target="#solution6"><span class="fa fa-check"></span> Rešitev</button>
 </p>
 </div>
-
+<!-- Right column end -->
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+<!-- Second row start -->
 <div class="alert alert-info" role="alert">
 <p>
 	<span class="label label-primary"><b>7</b></span>
 	<span class="fa fa-star pull-right"></span>
 </p>
-<p align="justify">Napiši program, ki izpiše <i>drugo</i> največjo vrednost v podani tabeli. Lahko predpostaviš, da ima tabela najmanj dva različna elementa in da so vsi elementi pozitivni. Na primer, za tabelo
-<pre>
-tabela = [100, 50, 70, 100, 70, 30, 60]
-</pre>
-naj program izpiše 70.</p>
+<p align="justify">Napiši program, ki izpiše <i>drugo</i> največjo vrednost v podani tabeli. Lahko predpostaviš, da ima tabela najmanj dva različna elementa in da so vsi elementi pozitivni. Na primer, za tabelo <code>[100, 50, 70, 100, 70, 30, 60]</code> naj program izpiše 70.</p>
 <p>
 <button type="button" class="btn btn-info" data-toggle="modal" data-target="#hint7"><span class="fa fa-question"></span> Namig</button>
 <button type="button" class="btn btn-info" data-toggle="modal" data-target="#solution7"><span class="fa fa-check"></span> Rešitev</button>
 </p>
 </div>
-<!-- Left column end -->
-					</div>
-					<div class="col-md-6">
-						<br />
-<!-- Right column start -->
-<div>
-<form>
-<p><textarea id="code"></textarea></p>
-<p>
-<a href="#" class="btn btn-primary"  onclick="runit()"><span class="fa fa-play"></span> Izvedi</a>
-<a href="#" class="btn btn-primary"  onclick="clearit()">Počisti</a>
-</p>
-</form>
-</div>
-<pre id="output"></pre>
-<!-- Right column end -->
+
+<table width="100%">
+  <tr id="tabRow" height="1em">
+    <td id="tab1_blocks" class="tabon">...</td>
+    <td class="tabmin">&nbsp;</td>
+    <td id="tab1_python" class="taboff">Python</td>
+    <td class="tabmin">&nbsp;</td>
+    <td class="tabmax" align="right">
+      <button type="button" class="btn btn-primary"  id="runButton"><span class="fa fa-play"></span> Izvedi</button>
+      <button type="button" class="btn btn-primary"  id="trashButton">Počisti</button>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="5" id="content1_area"></td>
+  </tr>
+</table>
+<table width="100%">
+  <tr>
+    <td style="position:relative; height:350px;">
+      <div id="content1_blocks" class="content"></div>
+      <pre id="content1_python" class="content"></pre>
+    </td>
+  </tr>
+</table>
+<div style="margin-top:10px"><pre id="output"></pre></div>
+
+<xml id="toolbox" style="display: none">
+  <category name="{catLogic}" colour="200">
+    <block type="controls_if"></block>
+    <block type="logic_compare"></block>
+    <block type="logic_operation"></block>
+    <block type="logic_negate"></block>
+    <block type="logic_boolean"></block>
+  </category>
+  <category name="{catLoops}" colour="320">
+    <block type="controls_whileUntil"></block>
+    <block type="controls_for">
+      <value name="FROM">
+        <shadow type="math_number">
+          <field name="NUM">1</field>
+        </shadow>
+      </value>
+      <value name="TO">
+        <shadow type="math_number">
+          <field name="NUM">10</field>
+        </shadow>
+      </value>
+      <value name="BY">
+        <shadow type="math_number">
+          <field name="NUM">1</field>
+        </shadow>
+      </value>
+    </block>
+    <block type="controls_forEach"></block>
+    <block type="controls_flow_statements"></block>
+  </category>
+  <category name="{catMath}" colour="220">
+    <block type="math_number"></block>
+    <block type="math_arithmetic">
+      <value name="A">
+        <shadow type="math_number">
+          <field name="NUM">1</field>
+        </shadow>
+      </value>
+      <value name="B">
+        <shadow type="math_number">
+          <field name="NUM">1</field>
+        </shadow>
+      </value>
+    </block>
+    <block type="math_modulo">
+      <value name="DIVIDEND">
+        <shadow type="math_number">
+          <field name="NUM">64</field>
+        </shadow>
+      </value>
+      <value name="DIVISOR">
+        <shadow type="math_number">
+          <field name="NUM">10</field>
+        </shadow>
+      </value>
+    </block>
+    <block type="math_floor_division">
+      <value name="DIVIDEND">
+        <shadow type="math_number">
+          <field name="NUM">64</field>
+        </shadow>
+      </value>
+      <value name="DIVISOR">
+        <shadow type="math_number">
+          <field name="NUM">10</field>
+        </shadow>
+      </value>
+    </block>
+  </category>
+  <category name="{catLists}" colour="10">
+    <block type="lists_create_with">
+      <mutation items="0"></mutation>
+    </block>
+    <block type="lists_create_with"></block>
+    <block type="lists_length"></block>
+    <block type="lists_isEmpty"></block>
+    <block type="lists_getIndex">
+      <value name="VALUE">
+        <block type="variables_get">
+          <field name="VAR">{listVariable}</field>
+        </block>
+      </value>
+    </block>
+    <block type="lists_setIndex">
+      <value name="LIST">
+        <block type="variables_get">
+          <field name="VAR">{listVariable}</field>
+        </block>
+      </value>
+    </block>
+    <block type="lists_getSublist">
+      <value name="LIST">
+        <block type="variables_get">
+          <field name="VAR">{listVariable}</field>
+        </block>
+      </value>
+    </block>
+    <block type="lists_sort"></block>
+  </category>
+  <category name="{catText}" colour="50">
+    <block type="text"></block>
+    <block type="text_join"></block>
+    <block type="text_print">
+      <value name="TEXT">
+        <shadow type="text">
+          <field name="TEXT">abc</field>
+        </shadow>
+      </value>
+    </block>
+    <block type="text_prompt_ext">
+      <value name="TEXT">
+        <shadow type="text">
+          <field name="TEXT">abc</field>
+        </shadow>
+      </value>
+    </block>
+  </category>
+  <sep></sep>
+  <category name="{catVariables}" colour="280" custom="VARIABLE"></category>
+</xml>
+<!-- Second row end -->
 					</div>
 				</div>
 			</div>
@@ -412,26 +503,26 @@ naj program izpiše 70.</p>
 			<div class="col-md-12">
 				<center>
 				<ul class="pagination pagination-sm">
-					<li><a href="../1203/index.html" aria-label="Previous Unit"><span aria-hidden="true">&laquo;</span></a></li>
-					<li><a href="../1204/index12.html" aria-label="Previous Page"><span aria-hidden="true">&#x2039;</span></a></li>
-					<li><a href="../1204/index.html">55</a></li>
-					<li><a href="../1204/index1.html">56</a></li>
-					<li><a href="../1204/index2.html">57</a></li>
-					<li><a href="../1204/index3.html">58</a></li>
-					<li><a href="../1204/index4.html">59</a></li>
-					<li><a href="../1204/index5.html">60</a></li>
-					<li><a href="../1204/index6.html">61</a></li>
-					<li><a href="../1204/index7.html">62</a></li>
-					<li><a href="../1204/index8.html">63</a></li>
-					<li><a href="../1204/index9.html">64</a></li>
-					<li><a href="../1204/index10.html">65</a></li>
-					<li><a href="../1204/index11.html">66</a></li>
-					<li><a href="../1204/index12.html">67</a></li>
-					<li class="active"><a href="#">68</a></li>
-					<li><a href="../1204/index14.html">69</a></li>
-					<li><a href="../1204/index15.html">70</a></li>
-					<li><a href="../1204/index14.html" aria-label="Next Page"><span aria-hidden="true">&#x203A;</span></a></li>
-					<li><a href="../1205/index.html" aria-label="Next Unit"><span aria-hidden="true">&raquo;</span></a></li>
+					<li><a href="../1223/index.html" aria-label="Previous Unit"><span aria-hidden="true">&laquo;</span></a></li>
+					<li><a href="../1224/index12.html" aria-label="Previous Page"><span aria-hidden="true">&#x2039;</span></a></li>
+					<li><a href="../1224/index.html">37</a></li>
+					<li><a href="../1224/index1.html">38</a></li>
+					<li><a href="../1224/index2.html">39</a></li>
+					<li><a href="../1224/index3.html">40</a></li>
+					<li><a href="../1224/index4.html">41</a></li>
+					<li><a href="../1224/index5.html">42</a></li>
+					<li><a href="../1224/index6.html">43</a></li>
+					<li><a href="../1224/index7.html">44</a></li>
+					<li><a href="../1224/index8.html">45</a></li>
+					<li><a href="../1224/index9.html">46</a></li>
+					<li><a href="../1224/index10.html">47</a></li>
+					<li><a href="../1224/index11.html">48</a></li>
+					<li><a href="../1224/index12.html">49</a></li>
+					<li class="active"><a href="#">50</a></li>
+					<li><a href="../1224/index14.html">51</a></li>
+					<li><a href="../1224/index15.html">52</a></li>
+					<li><a href="../1224/index14.html" aria-label="Next Page"><span aria-hidden="true">&#x203A;</span></a></li>
+					<li><a href="../1225/index.html" aria-label="Next Unit"><span aria-hidden="true">&raquo;</span></a></li>
 				</ul>
 				</center>
 			</div>
@@ -464,55 +555,22 @@ naj program izpiše 70.</p>
 	});
 	</script>
 
-	<!-- eXe Project -->
-	<script src="../js/exe/common.js"></script>
-
-	<!-- Skulpt and CodeMirror -->
-	<script src="../js/skulpt/codemirrorepl.js"></script>
-	<script src="../js/skulpt/repl.js"></script>
-	<script src="../js/skulpt/skulpt.js"></script>
-	<script src="../js/skulpt/skulpt-stdlib.js"></script>
-	<script src="../js/skulpt/python.js"></script>
-	<script>Sk.python3 = true;</script>
-
-<script type="text/javascript">
-function outf(text) {
-  var mypre = document.getElementById("output");
-  mypre.innerHTML = mypre.innerHTML + text;
-}
-function builtinRead(x) {
-  if (Sk.builtinFiles === undefined || Sk.builtinFiles["files"][x] === undefined)
-    throw "File not found: '" + x + "'";
-  return Sk.builtinFiles["files"][x];
-}
-function runit() {
-    var prog = editor.getValue();
-    var mypre = document.getElementById("output");
-    mypre.innerHTML = '';
-    Sk.canvas = "mycanvas";
-    Sk.pre = "output";
-    Sk.configure({output:outf, read:builtinRead});
-    try {
-        eval(Sk.importMainWithBody("<stdin>",false,prog));
-    }
-    catch(e) {
-        alert(e.toString())
-    }
-}
-function clearit() {
-    var mypre = document.getElementById("output");
-    mypre.innerHTML = '';
-}
-</script>
-
+<!-- Blockly -->
+<script src="../blockly/storage.js"></script>
+<script src="../blockly/blockly_compressed.js"></script>
+<script src="../blockly/blocks_compressed.js"></script>
+<script src="../blockly/javascript_compressed.js"></script>
+<script src="../blockly/python_compressed.js"></script>
+<script src="../blockly/local/custom_blocks.js"></script>
+<script src="index13.js"></script>
 <script>
-var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
-  lineNumbers: true,
-  matchBrackets: true,
-  mode: "python",
-  theme: "mbo"
-});
-editor.setSize('100%', 630);
+  var elementID = "";
+  $("#runButton").click(function() {
+    elementID = "#output";
+  });
+  window.alert = function(msg) {
+    $(elementID).append(msg + "\n");
+  };
 </script>
 
 

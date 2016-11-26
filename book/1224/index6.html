@@ -10,7 +10,7 @@
 	<meta name="author" content="">
 	<link rel="shortcut icon" href="../favicon.ico" />
 
-	<title>Sprehod po indeksih tabele</title>
+	<title>Sprehod po elementih tabele</title>
 
 	<!-- Bootstrap Core CSS -->
 	<link href="../css/bootstrap.min.css" rel="stylesheet">
@@ -20,6 +20,9 @@
 	<link href="../css/font-awesome.min.css" rel="stylesheet">
 
 	<link href="../css/style.css" rel="stylesheet">
+
+	<!-- Blockly editor -->
+	<link href="../blockly/local/editor.css" rel="stylesheet">
 
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -139,144 +142,316 @@
 			</div>
 		</div>
 
-		<!-- Modal (popup) window: Hint 1 -->
-		<div id="hint1" class="modal fade" role="dialog">
-			<div class="modal-dialog">
-
-				<!-- Modal content-->
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h4 class="modal-title">Namig</h4>
-					</div>
-					<div class="modal-body">
-						<p align="justify">Namesto da v telesu pogojnega stavka izpišeš trenutni indeks, izpiši element tabele <code>meseci</code> na tem indeksu.</p>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">Zapri</button>
-					</div>
-				</div>
-
-			</div>
-		</div>
-
-		<!-- Modal (popup) window: Solution 1 -->
-		<div id="solution1" class="modal fade" role="dialog">
-			<div class="modal-dialog">
-
-				<!-- Modal content-->
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h4 class="modal-title">Rešitev</h4>
-					</div>
-					<div class="modal-body">
-<pre>
-# Program izpiše ime vseh mesecev, ko je bilo prodanih več kot
-# 300 kg sladkarij.
-prodaja = [182, 250, 225, 315, 328, 160, 51, 36, 340, 280, 378, 320]
-# namesto kratic bi lahko uporabili polna imena
-meseci = ['jan', 'feb', 'mar', 'apr', 'maj', 'jun',
-          'jul', 'avg', 'sep', 'okt', 'nov', 'dec']
-
-for indeksMeseca in range(len(prodaja)):
-  # Če je prodaja v mesecu s trenutnim indeksom večja od 300,
-  # izpišemo njegovo ime.
-  if prodaja[indeksMeseca] &gt; 300:
-    print(meseci[indeksMeseca])
-</pre>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">Zapri</button>
-					</div>
-				</div>
-
-			</div>
-		</div>
-
 		<!-- Page Content -->
 		<div id="page-content-wrapper">
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-md-6">
 <!-- Left column start -->
-<h1>Sprehod po indeksih tabele</h1>
+<h1>Sprehod po elementih tabele</h1>
 
-<p align="justify">Pri sprehodu po tabeli včasih poleg trenutnega elementa potrebujemo tudi njegov indeks. V tem primeru lahko uporabimo sledečo zanko:
-<pre>
-for indeks in range(len(tabela)):
-  # indeks je indeks trenutnega elementa tabele
-  # tabela[indeks] je trenutni element tabele
-</pre>
-</p>
-
-<p align="justify">Spremenljivka <code>indeks</code> prepotuje vse veljavne indekse tabele, od 0 do <nobr><code>len(tabela) - 1</code></nobr>. Do trenutnega elementa tabele dostopamo z izrazom <code>tabela[indeks]</code>.</p>
-
-<p align="justify">Vrnimo se k naši Lizi. V katerih mesecih je Liza prodala več kot 300 kilogramov sladkarij? Da bo naloga enostavnejša, bomo najprej izpisali indekse mesecev (njihove zaporedne številke minus ena). Januar ima torej indeks 0, februar 1 itd. Indeksi mesecev ustrezajo indeksom v tabeli, saj element na indeksu 0 predstavlja prodajo v januarju, element na indeksu 1 prodajo v februarju itd. Zato lahko naš problem rešimo tako, da se sprehodimo po indeksih tabele in vsakokrat pogledamo element na trenutnem indeksu. Če je večji od 300, potem vemo, da je Liza v mesecu s tem indeksom prodala več kot 300 kg sladkarij, zato indeks izpišemo.</p>
-
-<div>
-<form>
-<p>
-<textarea id="code">prodaja = [182, 250, 225, 315, 328, 160,
-           51, 36, 340, 280, 378, 320]
-for indeksMeseca in range(len(prodaja)):
-  if prodaja[indeksMeseca] > 300:
-    print(indeksMeseca)</textarea>
-</p>
-<p>
-<a href="#" class="btn btn-primary"  onclick="runit()"><span class="fa fa-play"></span> Izvedi</a>
-<a href="#" class="btn btn-primary"  onclick="clearit()">Počisti</a>
-</p>
-</form>
-</div>
-<pre id="output"></pre>
-
-<p align="justify">Gornji program izpiše števila 3, 4, 8, 10 in 11, ki predstavljajo mesece april, maj, september, november in december.</p>
+<p align="justify">Našo Lizo še zanima, v koliko mesecih je prodala vsaj po 100 kg sladkarij. Tudi pri tej nalogi potrebujemo pomožno spremenljivko — števec za štetje elementov z vrednostjo najmanj 100. Števec na začetku postavimo na 0, nato pa se sprehodimo po elementih tabele. Če je trenutni element enak najmanj 100, števec povečamo za 1. Na koncu števec izpišemo:</p>
 <!-- Left column end -->
 					</div>
 					<div class="col-md-6">
-
+                        <br />
 <!-- Right column start -->
 <h4>Vaja</h4>
 
 <div class="alert alert-info" role="alert">
-
-<p align="justify">Popravi program tako, da bo izpisal <i>imena</i> mesecev, ko je bilo prodanih več kot 300 kilogramov sladkarij. Pomagaj si s sledečo tabelo:
-<pre>
-meseci = ['jan', 'feb', 'mar', 'apr', 'maj',
-          'jun', 'jul', 'avg', 'sep', 'okt',
-          'nov', 'dec']
-</pre>
-</p>
-<p>
-<button type="button" class="btn btn-info" data-toggle="modal" data-target="#hint1"><span class="fa fa-question"></span> Namig</button>
-<button type="button" class="btn btn-info" data-toggle="modal" data-target="#solution1"><span class="fa fa-check"></span> Rešitev</button>
-</p>
+<p align="justify">Vzemi svinčnik in kos papirja ter <i>po korakih</i> »izvedi« program za izračun vsote tabele in program za iskanje največje vrednosti (iz prejšnjih strani). Kakšne so vrednosti posameznih spremenljivk po posameznih korakih izvajanja?</p>
 </div>
-
-<p align="justify">Kako bi določili indeks meseca, v katerem je bila prodaja najnižja? Podobno kot pri računanju najmanjše <i>vrednosti</i> v tabeli si tudi tokrat pomagamo z dodatno spremenljivko, le da ta vsebuje <i>indeks</i> najmanjšega elementa izmed vseh tistih elementov, po katerih smo se že sprehodili. Sicer pa je postopek reševanja zelo podoben. Recimo, da indeks doslej najmanjšega elementa hranimo v spremenljivki <code>indeksMin</code>. Če je element na trenutnem indeksu manjši od elementa na indeksu <code>indeksMin</code>, potem spremenljivki <code>indeksMin</code> priredimo trenutni indeks. Tako dosežemo, da bo spremenljivka <code>indeksMin</code> po vsakem koraku zanke vsebovala indeks doslej najmanjšega elementa, po koncu zanke pa indeks najmanjšega elementa celotne tabele.</p>
-
-<div>
-<form>
-<p>
-<textarea id="code2">prodaja = [182, 250, 225, 315, 328, 160,
-           51, 36, 340, 280, 378, 320]
-indeksMin = 0
-for indeks in range(len(prodaja)):
-  if prodaja[indeks] < prodaja[indeksMin]:
-    indeksMin = indeks
-print(indeksMin)</textarea>
-</p>
-<p>
-<a href="#" class="btn btn-primary"  onclick="runit2()"><span class="fa fa-play"></span> Izvedi</a>
-<a href="#" class="btn btn-primary"  onclick="clearit2()">Počisti</a>
-</p>
-</form>
-</div>
-<pre id="output2"></pre>
-
-<p align="justify">Najmanjši element tabele ima indeks 7, kar pomeni, da je Liza najmanj sladkarij prodala v avgustu.</p>
 <!-- Right column end -->
+					</div>
+                </div>
+				<div class="row">
+					<div class="col-md-12">
+<!-- Second row start -->
+<table width="100%">
+  <tr id="tabRow" height="1em">
+    <td id="tab1_blocks" class="tabon">...</td>
+    <td class="tabmin">&nbsp;</td>
+    <td id="tab1_python" class="taboff">Python</td>
+    <td class="tabmin">&nbsp;</td>
+    <td class="tabmax" align="right">
+      <button type="button" class="btn btn-primary"  id="runButton"><span class="fa fa-play"></span> Izvedi</button>
+      <button type="button" class="btn btn-primary"  id="trashButton">Počisti</button>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="5" id="content1_area"></td>
+  </tr>
+</table>
+<table width="100%">
+  <tr>
+    <td style="position:relative; height:350px;">
+      <div id="content1_blocks" class="content"></div>
+      <pre id="content1_python" class="content"></pre>
+    </td>
+  </tr>
+</table>
+<div style="margin-top:10px"><pre id="output"></pre></div>
+
+<xml id="toolbox" style="display: none">
+  <category name="{catLogic}" colour="200">
+    <block type="controls_if"></block>
+    <block type="logic_compare"></block>
+    <block type="logic_operation"></block>
+    <block type="logic_negate"></block>
+    <block type="logic_boolean"></block>
+  </category>
+  <category name="{catLoops}" colour="320">
+    <block type="controls_whileUntil"></block>
+    <block type="controls_for">
+      <value name="FROM">
+        <shadow type="math_number">
+          <field name="NUM">1</field>
+        </shadow>
+      </value>
+      <value name="TO">
+        <shadow type="math_number">
+          <field name="NUM">10</field>
+        </shadow>
+      </value>
+      <value name="BY">
+        <shadow type="math_number">
+          <field name="NUM">1</field>
+        </shadow>
+      </value>
+    </block>
+    <block type="controls_forEach"></block>
+    <block type="controls_flow_statements"></block>
+  </category>
+  <category name="{catMath}" colour="220">
+    <block type="math_number"></block>
+    <block type="math_arithmetic">
+      <value name="A">
+        <shadow type="math_number">
+          <field name="NUM">1</field>
+        </shadow>
+      </value>
+      <value name="B">
+        <shadow type="math_number">
+          <field name="NUM">1</field>
+        </shadow>
+      </value>
+    </block>
+    <block type="math_modulo">
+      <value name="DIVIDEND">
+        <shadow type="math_number">
+          <field name="NUM">64</field>
+        </shadow>
+      </value>
+      <value name="DIVISOR">
+        <shadow type="math_number">
+          <field name="NUM">10</field>
+        </shadow>
+      </value>
+    </block>
+    <block type="math_floor_division">
+      <value name="DIVIDEND">
+        <shadow type="math_number">
+          <field name="NUM">64</field>
+        </shadow>
+      </value>
+      <value name="DIVISOR">
+        <shadow type="math_number">
+          <field name="NUM">10</field>
+        </shadow>
+      </value>
+    </block>
+  </category>
+  <category name="{catLists}" colour="10">
+    <block type="lists_create_with">
+      <mutation items="0"></mutation>
+    </block>
+    <block type="lists_create_with"></block>
+    <block type="lists_length"></block>
+    <block type="lists_getIndex">
+      <value name="VALUE">
+        <block type="variables_get">
+          <field name="VAR">{listVariable}</field>
+        </block>
+      </value>
+    </block>
+    <block type="lists_getSublist">
+      <value name="LIST">
+        <block type="variables_get">
+          <field name="VAR">{listVariable}</field>
+        </block>
+      </value>
+    </block>
+  </category>
+  <category name="{catText}" colour="50">
+    <block type="text"></block>
+    <block type="text_join"></block>
+    <block type="text_print">
+      <value name="TEXT">
+        <shadow type="text">
+          <field name="TEXT">abc</field>
+        </shadow>
+      </value>
+    </block>
+    <block type="text_prompt_ext">
+      <value name="TEXT">
+        <shadow type="text">
+          <field name="TEXT">abc</field>
+        </shadow>
+      </value>
+    </block>
+  </category>
+  <sep></sep>
+  <category name="{catVariables}" colour="280" custom="VARIABLE"></category>
+</xml>
+
+<xml id="workspace" style="display: none">
+  <block type="variables_set" id="10" x="10" y="10">
+    <field name="VAR">prodaja</field>
+    <value name="VALUE">
+      <block type="lists_create_with" id="11" inline="true">
+        <mutation items="12"></mutation>
+        <value name="ADD0">
+          <block type="math_number" id="12">
+            <field name="NUM">182</field>
+          </block>
+        </value>
+        <value name="ADD1">
+          <block type="math_number" id="13">
+            <field name="NUM">250</field>
+          </block>
+        </value>
+        <value name="ADD2">
+          <block type="math_number" id="14">
+            <field name="NUM">225</field>
+          </block>
+        </value>
+        <value name="ADD3">
+          <block type="math_number" id="15">
+            <field name="NUM">315</field>
+          </block>
+        </value>
+        <value name="ADD4">
+          <block type="math_number" id="16">
+            <field name="NUM">328</field>
+          </block>
+        </value>
+        <value name="ADD5">
+          <block type="math_number" id="17">
+            <field name="NUM">160</field>
+          </block>
+        </value>
+        <value name="ADD6">
+          <block type="math_number" id="18">
+            <field name="NUM">51</field>
+          </block>
+        </value>
+        <value name="ADD7">
+          <block type="math_number" id="19">
+            <field name="NUM">36</field>
+          </block>
+        </value>
+        <value name="ADD8">
+          <block type="math_number" id="20">
+            <field name="NUM">340</field>
+          </block>
+        </value>
+        <value name="ADD9">
+          <block type="math_number" id="21">
+            <field name="NUM">280</field>
+          </block>
+        </value>
+        <value name="ADD10">
+          <block type="math_number" id="22">
+            <field name="NUM">378</field>
+          </block>
+        </value>
+        <value name="ADD11">
+          <block type="math_number" id="23">
+            <field name="NUM">320</field>
+          </block>
+        </value>
+      </block>
+    </value>
+    <next>
+      <block type="variables_set" id="24">
+        <field name="VAR">stevec</field>
+        <value name="VALUE">
+          <block type="math_number" id="25">
+            <field name="NUM">0</field>
+          </block>
+        </value>
+        <next>
+          <block type="controls_forEach" id="26">
+            <field name="VAR">prodajaMesec</field>
+            <value name="LIST">
+              <block type="variables_get" id="27">
+                <field name="VAR">prodaja</field>
+              </block>
+            </value>
+            <statement name="DO">
+              <block type="controls_if" id="28">
+                <value name="IF0">
+                  <block type="logic_compare" id="29">
+                    <field name="OP">GTE</field>
+                    <value name="A">
+                      <block type="variables_get" id="30">
+                        <field name="VAR">prodajaMesec</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" id="31">
+                        <field name="NUM">100</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO0">
+                  <block type="variables_set" id="32">
+                    <field name="VAR">stevec</field>
+                    <value name="VALUE">
+                      <block type="math_arithmetic" id="33" collapsed="true">
+                        <field name="OP">ADD</field>
+                        <value name="A">
+                          <shadow type="math_number" id="34">
+                            <field name="NUM">1</field>
+                          </shadow>
+                          <block type="variables_get" id="35">
+                            <field name="VAR">stevec</field>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <shadow type="math_number" id="36">
+                            <field name="NUM">1</field>
+                          </shadow>
+                          <block type="math_number" id="37">
+                            <field name="NUM">1</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                  </block>
+                </statement>
+              </block>
+            </statement>
+            <next>
+              <block type="text_print" id="38">
+                <value name="TEXT">
+                  <shadow type="text" id="39">
+                    <field name="TEXT">abc</field>
+                  </shadow>
+                  <block type="variables_get" id="40">
+                    <field name="VAR">stevec</field>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </next>
+  </block>
+</xml>
+<!-- Second row end -->
 					</div>
 				</div>
 			</div>
@@ -285,26 +460,26 @@ print(indeksMin)</textarea>
 			<div class="col-md-12">
 				<center>
 				<ul class="pagination pagination-sm">
-					<li><a href="../1203/index.html" aria-label="Previous Unit"><span aria-hidden="true">&laquo;</span></a></li>
-					<li><a href="../1204/index5.html" aria-label="Previous Page"><span aria-hidden="true">&#x2039;</span></a></li>
-					<li><a href="../1204/index.html">55</a></li>
-					<li><a href="../1204/index1.html">56</a></li>
-					<li><a href="../1204/index2.html">57</a></li>
-					<li><a href="../1204/index3.html">58</a></li>
-					<li><a href="../1204/index4.html">59</a></li>
-					<li><a href="../1204/index5.html">60</a></li>
-					<li class="active"><a href="#">61</a></li>
-					<li><a href="../1204/index7.html">62</a></li>
-					<li><a href="../1204/index8.html">63</a></li>
-					<li><a href="../1204/index9.html">64</a></li>
-					<li><a href="../1204/index10.html">65</a></li>
-					<li><a href="../1204/index11.html">66</a></li>
-					<li><a href="../1204/index12.html">67</a></li>
-					<li><a href="../1204/index13.html">68</a></li>
-					<li><a href="../1204/index14.html">69</a></li>
-					<li><a href="../1204/index15.html">70</a></li>
-					<li><a href="../1204/index7.html" aria-label="Next Page"><span aria-hidden="true">&#x203A;</span></a></li>
-					<li><a href="../1205/index.html" aria-label="Next Unit"><span aria-hidden="true">&raquo;</span></a></li>
+					<li><a href="../1223/index.html" aria-label="Previous Unit"><span aria-hidden="true">&laquo;</span></a></li>
+					<li><a href="../1224/index5.html" aria-label="Previous Page"><span aria-hidden="true">&#x2039;</span></a></li>
+					<li><a href="../1224/index.html">37</a></li>
+					<li><a href="../1224/index1.html">38</a></li>
+					<li><a href="../1224/index2.html">39</a></li>
+					<li><a href="../1224/index3.html">40</a></li>
+					<li><a href="../1224/index4.html">41</a></li>
+					<li><a href="../1224/index5.html">42</a></li>
+					<li class="active"><a href="#">43</a></li>
+					<li><a href="../1224/index7.html">44</a></li>
+					<li><a href="../1224/index8.html">45</a></li>
+					<li><a href="../1224/index9.html">46</a></li>
+					<li><a href="../1224/index10.html">47</a></li>
+					<li><a href="../1224/index11.html">48</a></li>
+					<li><a href="../1224/index12.html">49</a></li>
+					<li><a href="../1224/index13.html">50</a></li>
+					<li><a href="../1224/index14.html">51</a></li>
+					<li><a href="../1224/index15.html">52</a></li>
+					<li><a href="../1224/index7.html" aria-label="Next Page"><span aria-hidden="true">&#x203A;</span></a></li>
+					<li><a href="../1225/index.html" aria-label="Next Unit"><span aria-hidden="true">&raquo;</span></a></li>
 				</ul>
 				</center>
 			</div>
@@ -337,95 +512,22 @@ print(indeksMin)</textarea>
 	});
 	</script>
 
-	<!-- eXe Project -->
-	<script src="../js/exe/common.js"></script>
-
-	<!-- Skulpt and CodeMirror -->
-	<script src="../js/skulpt/codemirrorepl.js"></script>
-	<script src="../js/skulpt/repl.js"></script>
-	<script src="../js/skulpt/skulpt.js"></script>
-	<script src="../js/skulpt/skulpt-stdlib.js"></script>
-	<script src="../js/skulpt/python.js"></script>
-	<script>Sk.python3 = true;</script>
-
-<script type="text/javascript">
-function outf(text) {
-  var mypre = document.getElementById("output");
-  mypre.innerHTML = mypre.innerHTML + text;
-}
-function builtinRead(x) {
-  if (Sk.builtinFiles === undefined || Sk.builtinFiles["files"][x] === undefined)
-    throw "File not found: '" + x + "'";
-  return Sk.builtinFiles["files"][x];
-}
-function runit() {
-    var prog = editor.getValue();
-    var mypre = document.getElementById("output");
-    mypre.innerHTML = '';
-    Sk.canvas = "mycanvas";
-    Sk.pre = "output";
-    Sk.configure({output:outf, read:builtinRead});
-    try {
-        eval(Sk.importMainWithBody("<stdin>",false,prog));
-    }
-    catch(e) {
-        alert(e.toString())
-    }
-}
-function clearit() {
-    var mypre = document.getElementById("output");
-    mypre.innerHTML = '';
-}
-</script>
-
+<!-- Blockly -->
+<script src="../blockly/storage.js"></script>
+<script src="../blockly/blockly_compressed.js"></script>
+<script src="../blockly/blocks_compressed.js"></script>
+<script src="../blockly/javascript_compressed.js"></script>
+<script src="../blockly/python_compressed.js"></script>
+<script src="../blockly/local/custom_blocks.js"></script>
+<script src="index6.js"></script>
 <script>
-var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
-  lineNumbers: true,
-  matchBrackets: true,
-  mode: "python",
-  theme: "mbo"
-});
-editor.setSize('100%', 90);
-</script>
-
-<script type="text/javascript">
-function outf2(text) {
-  var mypre2 = document.getElementById("output2");
-  mypre2.innerHTML = mypre2.innerHTML + text;
-}
-function builtinRead2(x) {
-  if (Sk.builtinFiles === undefined || Sk.builtinFiles["files"][x] === undefined)
-    throw "File not found: '" + x + "'";
-  return Sk.builtinFiles["files"][x];
-}
-function runit2() {
-    var prog = editor2.getValue();
-    var mypre2 = document.getElementById("output2");
-    mypre2.innerHTML = '';
-    Sk.canvas = "mycanvas2";
-    Sk.pre = "output2";
-    Sk.configure({output:outf2, read:builtinRead2});
-    try {
-        eval(Sk.importMainWithBody("<stdin>",false,prog));
-    }
-    catch(e) {
-        alert(e.toString())
-    }
-}
-function clearit2() {
-    var mypre2 = document.getElementById("output2");
-    mypre2.innerHTML = '';
-}
-</script>
-
-<script>
-var editor2 = CodeMirror.fromTextArea(document.getElementById("code2"), {
-  lineNumbers: true,
-  matchBrackets: true,
-  mode: "python",
-  theme: "mbo"
-});
-editor2.setSize('100%', 120);
+  var elementID = "";
+  $("#runButton").click(function() {
+    elementID = "#output";
+  });
+  window.alert = function(msg) {
+    $(elementID).append(msg + "\n");
+  };
 </script>
 
 

@@ -230,7 +230,6 @@ Code12241a.init = function() {
            snap: true},
        media: '../blockly/media/',
 	   oneBasedIndex: false,
-	   //readOnly: true,
        toolbox: toolboxXml,
        zoom:
            {controls: true,

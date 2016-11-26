@@ -10,7 +10,7 @@
 	<meta name="author" content="">
 	<link rel="shortcut icon" href="../favicon.ico" />
 
-	<title>Sprehod po indeksih tabele</title>
+	<title>Sprehod po elementih tabele</title>
 
 	<!-- Bootstrap Core CSS -->
 	<link href="../css/bootstrap.min.css" rel="stylesheet">
@@ -20,6 +20,9 @@
 	<link href="../css/font-awesome.min.css" rel="stylesheet">
 
 	<link href="../css/style.css" rel="stylesheet">
+
+	<!-- Blockly editor -->
+	<link href="../blockly/local/editor.css" rel="stylesheet">
 
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -139,50 +142,8 @@
 			</div>
 		</div>
 
-		<!-- Modal (popup) window: Hint 1 -->
-		<div id="hint1" class="modal fade" role="dialog">
-			<div class="modal-dialog">
-
-				<!-- Modal content-->
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h4 class="modal-title">Namig</h4>
-					</div>
-					<div class="modal-body">
-						<p align="justify">Najprej poišči najmanjši element tabele.</p>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">Zapri</button>
-					</div>
-				</div>
-
-			</div>
-		</div>
-
-		<!-- Modal (popup) window: Hint 2 -->
-		<div id="hint2" class="modal fade" role="dialog">
-			<div class="modal-dialog">
-
-				<!-- Modal content-->
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h4 class="modal-title">Namig</h4>
-					</div>
-					<div class="modal-body">
-						<p align="justify">Nato se sprehodi po indeksih tabele in vsakokrat preveri, ali je element na trenutnem indeksu enak najmanjšemu elementu tabele. Če je, izpiši trenutni indeks.</p>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">Zapri</button>
-					</div>
-				</div>
-
-			</div>
-		</div>
-
-		<!-- Modal (popup) window: Solution 1 -->
-		<div id="solution1" class="modal fade" role="dialog">
+		<!-- Modal (popup) window: Solution 2 -->
+		<div id="solution2" class="modal fade" role="dialog">
 			<div class="modal-dialog">
 
 				<!-- Modal content-->
@@ -192,22 +153,50 @@
 						<h4 class="modal-title">Rešitev</h4>
 					</div>
 					<div class="modal-body">
+						<p align="justify">Ko naletimo na element z vrednostjo najmanj 100, lahko sprehod prekinemo in takoj izpišemo <code>DA</code>. Program bi deloval tudi brez stavka <code>zapusti</code>, bi pa v nekaterih primerih opravljal odvečno delo.</p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Zapri</button>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<!-- Modal (popup) window: Hint 3 -->
+		<div id="hint3" class="modal fade" role="dialog">
+			<div class="modal-dialog">
+
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">Namig</h4>
+					</div>
+					<div class="modal-body">
+						<p align="justify">Pomagaj si s štetjem elementov ali pa s spremenljivko logičnega tipa po zgledu prejšnje naloge.</p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Zapri</button>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<!-- Modal (popup) window: Solution 3 -->
+		<div id="solution3" class="modal fade" role="dialog">
+			<div class="modal-dialog modal-lg">
+
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">Rešitev</h4>
+					</div>
+					<div class="modal-body">
 <pre>
-# Program izpiše indekse vseh najmanjših elementov v podani tabeli.
-tabela = [30, 20, 20, 80, 20, 40]
-
-# Določimo najmanjši element.
-najmanjsi = tabela[0]
-for element in tabela:
-  if element &lt; najmanjsi:
-    najmanjsi = element
-
-# Sprehodimo se po indeksih tabele in vsakokrat pogledamo, ali je element
-# na trenutnem indeksu enak najmanjšemu elementu tabele. Če je, izpišemo
-# trenutni indeks.
-for indeks in range(len(tabela)):
-  if tabela[indeks] == najmanjsi:
-    print(indeks)
+<img src="img/1224-07-1.png">
 </pre>
 					</div>
 					<div class="modal-footer">
@@ -224,81 +213,336 @@ for indeks in range(len(tabela)):
 				<div class="row">
 					<div class="col-md-6">
 <!-- Left column start -->
-<h1>Sprehod po indeksih tabele</h1>
- 
+<h1>Sprehod po elementih tabele</h1>
 
-<h4>Vaja</h4>
+<p align="justify">Napišimo še program, ki preveri, ali je <i>vsaj en</i> element v tabeli enak najmanj 100. Če to drži, naj program izpiše <code>DA</code>, sicer pa <code>NE</code>.</p>
 
-<div class="alert alert-info" role="alert">
-<p align="justify">Po korakih »izvedi« gornji program s svinčnikom in papirjem.</p>
-</div>
-
-<h4>V razmislek</h4>
-
-<div class="alert alert-info" role="alert">
-<p align="justify">Program za iskanje indeksa najmanjšega elementa v tabeli bi deloval tudi v primeru, če bi se sprehodili od drugega elementa do zadnjega:
-<pre>
-tabela = [...]
-indeksMin = 0
-for indeks in range(1, len(tabela)):
-  if tabela[indeks] &lt; tabela[indeksMin]:
-    indeksMin = indeks
-print(indeksMin)
-</pre>
-Zakaj?</p>
-</div>
-
-<h4>Vaja</h4>
-
-<div class="alert alert-info" role="alert">
-<p align="justify">Napiši program, ki za podano tabelo izpiše indekse vseh najmanjših elementov (če jih je več). Na primer, za tabelo <code>[30, 20, 20, 80, 20, 40]</code> naj program izpiše indekse 1, 2 in 4.</p>
-<p>
-<button type="button" class="btn btn-info" data-toggle="modal" data-target="#hint1"><span class="fa fa-question"></span> Namig 1</button>
-<button type="button" class="btn btn-info" data-toggle="modal" data-target="#hint2"><span class="fa fa-question"></span> Namig 2</button>
-<button type="button" class="btn btn-info" data-toggle="modal" data-target="#solution1"><span class="fa fa-check"></span> Rešitev</button>
-</p>
-</div>
+<p align="justify">Naloge se lahko lotimo enako kot prejšnje, le da na koncu namesto izpisa števca preverimo, ali je njegova vrednost večja od 0. Lahko pa si namesto s števcem pomagamo s spremenljivko logičnega tipa. Spremenljivko (recimo ji <code>vsajEden</code>) na začetku postavimo na <code>neresnično</code>, ko naletimo na element z vrednostjo najmanj 100, pa jo postavimo na <code>resnično</code>. Po koncu sprehoda preverimo vrednost spremenljivke:</p>
 <!-- Left column end -->
 					</div>
 					<div class="col-md-6">
+						<br />
 <!-- Right column start -->
-<h1>Spreminjanje, dodajanje in odstranjevanje elementov</h1>
+<h4>Vaja</h4>
 
-<p align="justify">Element na nekem indeksu v tabeli spremenimo s preprostim prirejanjem:
-<pre>
-&gt;&gt;&gt; t = [1, 2, 3, 4]
-&gt;&gt;&gt; t[1] = 10
-&gt;&gt;&gt; t
-[1, 10, 3, 4]
-</pre>
+<div class="alert alert-info" role="alert">
+<p align="justify">Zakaj smo po stavku <code>nastavi vsajEden na resnično</code> dodali še stavek <code>zapusti</code>? Bi program deloval tudi brez stavka <code>zapusti</code>?</p>
+<p>
+<button type="button" class="btn btn-info" data-toggle="modal" data-target="#solution2"><span class="fa fa-check"></span> Rešitev</button>
 </p>
+</div>
 
-<p align="justify">S stavkom <i>tabela</i>.<code>append</code>(<i>element</i>) dodamo element na konec tabele, s stavkom <i>tabela</i>.<code>insert</code>(<i>indeks</i>, <i>element</i>) pa element vstavimo pred element s podanim indeksom:
-<pre>
-&gt;&gt;&gt; t = [10, 20, 30, 40]
-&gt;&gt;&gt; t.append(100)
-&gt;&gt;&gt; t
-[10, 20, 30, 40, 100]
-&gt;&gt;&gt; t.insert(1, 60)
-[10, 60, 20, 30, 40, 100]
-</pre>
-</p>
+<h4>Vaja</h4>
 
-<p align="justify">Element lahko iz tabele odstranimo na dva načina. Ukaz
-<pre>
-tabela[indeks : indeks + 1] = []
-</pre>
+<div class="alert alert-info" role="alert">
+<p align="justify">Napiši program, ki izpiše <code>DA</code>, če so vsi elementi tabele enaki najmanj 100. V nasprotnem primeru naj program izpiše <code>NE</code>. Program preveri s čim več različnimi tabelami. (Ime tabele seveda lahko ostane <code>prodaja</code>, spreminjaj pa njeno dolžino in vrednosti elementov.)</p>
+<p>
+<button type="button" class="btn btn-info" data-toggle="modal" data-target="#hint3"><span class="fa fa-question"></span> Namig</button>
+<button type="button" class="btn btn-info" data-toggle="modal" data-target="#solution3"><span class="fa fa-check"></span> Rešitev</button>
 </p>
-
-<p align="justify">odstrani element na indeksu <code>indeks</code>, ukaz
-<pre>
-tabela.remove(vrednost)
-</pre>
-</p>
-
-<p align="justify">pa odstrani prvi element s podano vrednostjo. Če element ne obstaja, sproži izjemo.
-</p>
+</div>
 <!-- Right column end -->
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+<!-- Second row start -->
+<table width="100%">
+  <tr id="tabRow" height="1em">
+    <td id="tab1_blocks" class="tabon">...</td>
+    <td class="tabmin">&nbsp;</td>
+    <td id="tab1_python" class="taboff">Python</td>
+    <td class="tabmin">&nbsp;</td>
+    <td class="tabmax" align="right">
+      <button type="button" class="btn btn-primary"  id="runButton"><span class="fa fa-play"></span> Izvedi</button>
+      <button type="button" class="btn btn-primary"  id="trashButton">Počisti</button>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="5" id="content1_area"></td>
+  </tr>
+</table>
+<table width="100%">
+  <tr>
+    <td style="position:relative; height:350px;">
+      <div id="content1_blocks" class="content"></div>
+      <pre id="content1_python" class="content"></pre>
+    </td>
+  </tr>
+</table>
+<div style="margin-top:10px"><pre id="output"></pre></div>
+
+<xml id="toolbox" style="display: none">
+  <category name="{catLogic}" colour="200">
+    <block type="controls_if"></block>
+    <block type="logic_compare"></block>
+    <block type="logic_operation"></block>
+    <block type="logic_negate"></block>
+    <block type="logic_boolean"></block>
+  </category>
+  <category name="{catLoops}" colour="320">
+    <block type="controls_whileUntil"></block>
+    <block type="controls_for">
+      <value name="FROM">
+        <shadow type="math_number">
+          <field name="NUM">1</field>
+        </shadow>
+      </value>
+      <value name="TO">
+        <shadow type="math_number">
+          <field name="NUM">10</field>
+        </shadow>
+      </value>
+      <value name="BY">
+        <shadow type="math_number">
+          <field name="NUM">1</field>
+        </shadow>
+      </value>
+    </block>
+    <block type="controls_forEach"></block>
+    <block type="controls_flow_statements"></block>
+  </category>
+  <category name="{catMath}" colour="220">
+    <block type="math_number"></block>
+    <block type="math_arithmetic">
+      <value name="A">
+        <shadow type="math_number">
+          <field name="NUM">1</field>
+        </shadow>
+      </value>
+      <value name="B">
+        <shadow type="math_number">
+          <field name="NUM">1</field>
+        </shadow>
+      </value>
+    </block>
+    <block type="math_modulo">
+      <value name="DIVIDEND">
+        <shadow type="math_number">
+          <field name="NUM">64</field>
+        </shadow>
+      </value>
+      <value name="DIVISOR">
+        <shadow type="math_number">
+          <field name="NUM">10</field>
+        </shadow>
+      </value>
+    </block>
+    <block type="math_floor_division">
+      <value name="DIVIDEND">
+        <shadow type="math_number">
+          <field name="NUM">64</field>
+        </shadow>
+      </value>
+      <value name="DIVISOR">
+        <shadow type="math_number">
+          <field name="NUM">10</field>
+        </shadow>
+      </value>
+    </block>
+  </category>
+  <category name="{catLists}" colour="10">
+    <block type="lists_create_with">
+      <mutation items="0"></mutation>
+    </block>
+    <block type="lists_create_with"></block>
+    <block type="lists_length"></block>
+    <block type="lists_getIndex">
+      <value name="VALUE">
+        <block type="variables_get">
+          <field name="VAR">{listVariable}</field>
+        </block>
+      </value>
+    </block>
+    <block type="lists_getSublist">
+      <value name="LIST">
+        <block type="variables_get">
+          <field name="VAR">{listVariable}</field>
+        </block>
+      </value>
+    </block>
+  </category>
+  <category name="{catText}" colour="50">
+    <block type="text"></block>
+    <block type="text_join"></block>
+    <block type="text_print">
+      <value name="TEXT">
+        <shadow type="text">
+          <field name="TEXT">abc</field>
+        </shadow>
+      </value>
+    </block>
+    <block type="text_prompt_ext">
+      <value name="TEXT">
+        <shadow type="text">
+          <field name="TEXT">abc</field>
+        </shadow>
+      </value>
+    </block>
+  </category>
+  <sep></sep>
+  <category name="{catVariables}" colour="280" custom="VARIABLE"></category>
+</xml>
+
+<xml id="workspace" style="display: none">
+  <block type="variables_set" id="10" x="10" y="10">
+    <field name="VAR">prodaja</field>
+    <value name="VALUE">
+      <block type="lists_create_with" id="11" inline="true">
+        <mutation items="12"></mutation>
+        <value name="ADD0">
+          <block type="math_number" id="12">
+            <field name="NUM">182</field>
+          </block>
+        </value>
+        <value name="ADD1">
+          <block type="math_number" id="13">
+            <field name="NUM">250</field>
+          </block>
+        </value>
+        <value name="ADD2">
+          <block type="math_number" id="14">
+            <field name="NUM">225</field>
+          </block>
+        </value>
+        <value name="ADD3">
+          <block type="math_number" id="15">
+            <field name="NUM">315</field>
+          </block>
+        </value>
+        <value name="ADD4">
+          <block type="math_number" id="16">
+            <field name="NUM">328</field>
+          </block>
+        </value>
+        <value name="ADD5">
+          <block type="math_number" id="17">
+            <field name="NUM">160</field>
+          </block>
+        </value>
+        <value name="ADD6">
+          <block type="math_number" id="18">
+            <field name="NUM">51</field>
+          </block>
+        </value>
+        <value name="ADD7">
+          <block type="math_number" id="19">
+            <field name="NUM">36</field>
+          </block>
+        </value>
+        <value name="ADD8">
+          <block type="math_number" id="20">
+            <field name="NUM">340</field>
+          </block>
+        </value>
+        <value name="ADD9">
+          <block type="math_number" id="21">
+            <field name="NUM">280</field>
+          </block>
+        </value>
+        <value name="ADD10">
+          <block type="math_number" id="22">
+            <field name="NUM">378</field>
+          </block>
+        </value>
+        <value name="ADD11">
+          <block type="math_number" id="23">
+            <field name="NUM">320</field>
+          </block>
+        </value>
+      </block>
+    </value>
+    <next>
+      <block type="variables_set" id="24">
+        <field name="VAR">vsajEden</field>
+        <value name="VALUE">
+          <block type="logic_boolean" id="25">
+            <field name="BOOL">FALSE</field>
+          </block>
+        </value>
+        <next>
+          <block type="controls_forEach" id="26">
+            <field name="VAR">prodajaMesec</field>
+            <value name="LIST">
+              <block type="variables_get" id="27">
+                <field name="VAR">prodaja</field>
+              </block>
+            </value>
+            <statement name="DO">
+              <block type="controls_if" id="28">
+                <value name="IF0">
+                  <block type="logic_compare" id="29">
+                    <field name="OP">GTE</field>
+                    <value name="A">
+                      <block type="variables_get" id="30">
+                        <field name="VAR">prodajaMesec</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" id="31">
+                        <field name="NUM">100</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO0">
+                  <block type="variables_set" id="32">
+                    <field name="VAR">vsajEden</field>
+                    <value name="VALUE">
+                      <block type="logic_boolean" id="33">
+                        <field name="BOOL">TRUE</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="controls_flow_statements" id="34">
+                        <field name="FLOW">BREAK</field>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+              </block>
+            </statement>
+            <next>
+              <block type="controls_if" id="35">
+                <mutation else="1"></mutation>
+                <value name="IF0">
+                  <block type="variables_get" id="36">
+                    <field name="VAR">vsajEden</field>
+                  </block>
+                </value>
+                <statement name="DO0">
+                  <block type="text_print" id="37">
+                    <value name="TEXT">
+                      <shadow type="text" id="38">
+                        <field name="TEXT">abc</field>
+                      </shadow>
+                      <block type="text" id="39">
+                        <field name="TEXT">DA</field>
+                      </block>
+                    </value>
+                  </block>
+                </statement>
+                <statement name="ELSE">
+                  <block type="text_print" id="40">
+                    <value name="TEXT">
+                      <shadow type="text" id="41">
+                        <field name="TEXT">abc</field>
+                      </shadow>
+                      <block type="text" id="42">
+                        <field name="TEXT">NE</field>
+                      </block>
+                    </value>
+                  </block>
+                </statement>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </next>
+  </block>
+</xml>
+<!-- Second row end -->
 					</div>
 				</div>
 			</div>
@@ -307,26 +551,26 @@ tabela.remove(vrednost)
 			<div class="col-md-12">
 				<center>
 				<ul class="pagination pagination-sm">
-					<li><a href="../1203/index.html" aria-label="Previous Unit"><span aria-hidden="true">&laquo;</span></a></li>
-					<li><a href="../1204/index6.html" aria-label="Previous Page"><span aria-hidden="true">&#x2039;</span></a></li>
-					<li><a href="../1204/index.html">55</a></li>
-					<li><a href="../1204/index1.html">56</a></li>
-					<li><a href="../1204/index2.html">57</a></li>
-					<li><a href="../1204/index3.html">58</a></li>
-					<li><a href="../1204/index4.html">59</a></li>
-					<li><a href="../1204/index5.html">60</a></li>
-					<li><a href="../1204/index6.html">61</a></li>
-					<li class="active"><a href="#">62</a></li>
-					<li><a href="../1204/index8.html">63</a></li>
-					<li><a href="../1204/index9.html">64</a></li>
-					<li><a href="../1204/index10.html">65</a></li>
-					<li><a href="../1204/index11.html">66</a></li>
-					<li><a href="../1204/index12.html">67</a></li>
-					<li><a href="../1204/index13.html">68</a></li>
-					<li><a href="../1204/index14.html">69</a></li>
-					<li><a href="../1204/index15.html">70</a></li>
-					<li><a href="../1204/index8.html" aria-label="Next Page"><span aria-hidden="true">&#x203A;</span></a></li>
-					<li><a href="../1205/index.html" aria-label="Next Unit"><span aria-hidden="true">&raquo;</span></a></li>
+					<li><a href="../1223/index.html" aria-label="Previous Unit"><span aria-hidden="true">&laquo;</span></a></li>
+					<li><a href="../1224/index6.html" aria-label="Previous Page"><span aria-hidden="true">&#x2039;</span></a></li>
+					<li><a href="../1224/index.html">37</a></li>
+					<li><a href="../1224/index1.html">38</a></li>
+					<li><a href="../1224/index2.html">39</a></li>
+					<li><a href="../1224/index3.html">40</a></li>
+					<li><a href="../1224/index4.html">41</a></li>
+					<li><a href="../1224/index5.html">42</a></li>
+					<li><a href="../1224/index6.html">43</a></li>
+					<li class="active"><a href="#">44</a></li>
+					<li><a href="../1224/index8.html">45</a></li>
+					<li><a href="../1224/index9.html">46</a></li>
+					<li><a href="../1224/index10.html">47</a></li>
+					<li><a href="../1224/index11.html">48</a></li>
+					<li><a href="../1224/index12.html">49</a></li>
+					<li><a href="../1224/index13.html">50</a></li>
+					<li><a href="../1224/index14.html">51</a></li>
+					<li><a href="../1224/index15.html">52</a></li>
+					<li><a href="../1224/index8.html" aria-label="Next Page"><span aria-hidden="true">&#x203A;</span></a></li>
+					<li><a href="../1225/index.html" aria-label="Next Unit"><span aria-hidden="true">&raquo;</span></a></li>
 				</ul>
 				</center>
 			</div>
@@ -359,16 +603,23 @@ tabela.remove(vrednost)
 	});
 	</script>
 
-	<!-- eXe Project -->
-	<script src="../js/exe/common.js"></script>
-
-	<!-- Skulpt and CodeMirror -->
-	<script src="../js/skulpt/codemirrorepl.js"></script>
-	<script src="../js/skulpt/repl.js"></script>
-	<script src="../js/skulpt/skulpt.js"></script>
-	<script src="../js/skulpt/skulpt-stdlib.js"></script>
-	<script src="../js/skulpt/python.js"></script>
-	<script>Sk.python3 = true;</script>
+<!-- Blockly -->
+<script src="../blockly/storage.js"></script>
+<script src="../blockly/blockly_compressed.js"></script>
+<script src="../blockly/blocks_compressed.js"></script>
+<script src="../blockly/javascript_compressed.js"></script>
+<script src="../blockly/python_compressed.js"></script>
+<script src="../blockly/local/custom_blocks.js"></script>
+<script src="index7.js"></script>
+<script>
+  var elementID = "";
+  $("#runButton").click(function() {
+    elementID = "#output";
+  });
+  window.alert = function(msg) {
+    $(elementID).append(msg + "\n");
+  };
+</script>
 
 
 <!-- CookieCuttr -->

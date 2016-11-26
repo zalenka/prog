@@ -10,7 +10,7 @@
 	<meta name="author" content="">
 	<link rel="shortcut icon" href="../favicon.ico" />
 
-	<title>*Prirejanje vrednosti tabelaričnega tipa</title>
+	<title>Sprehod po indeksih tabele</title>
 
 	<!-- Bootstrap Core CSS -->
 	<link href="../css/bootstrap.min.css" rel="stylesheet">
@@ -139,66 +139,139 @@
 			</div>
 		</div>
 
+		<!-- Modal (popup) window: Hint 1 -->
+		<div id="hint1" class="modal fade" role="dialog">
+			<div class="modal-dialog">
+
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">Namig</h4>
+					</div>
+					<div class="modal-body">
+						<p align="justify">Najprej poišči najmanjši element tabele.</p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Zapri</button>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<!-- Modal (popup) window: Hint 2 -->
+		<div id="hint2" class="modal fade" role="dialog">
+			<div class="modal-dialog">
+
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">Namig</h4>
+					</div>
+					<div class="modal-body">
+						<p align="justify">Nato se sprehodi po indeksih tabele in vsakokrat preveri, ali je element na trenutnem indeksu enak najmanjšemu elementu tabele. Če je, izpiši trenutni indeks.</p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Zapri</button>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<!-- Modal (popup) window: Solution 1 -->
+		<div id="solution1" class="modal fade" role="dialog">
+			<div class="modal-dialog">
+
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">Rešitev</h4>
+					</div>
+					<div class="modal-body">
+<pre>
+# Program izpiše indekse vseh najmanjših elementov v podani tabeli.
+tabela = [30, 20, 20, 80, 20, 40]
+
+# Določimo najmanjši element.
+najmanjsi = tabela[0]
+for element in tabela:
+  if element &lt; najmanjsi:
+    najmanjsi = element
+
+# Sprehodimo se po indeksih tabele in vsakokrat pogledamo, ali je element
+# na trenutnem indeksu enak najmanjšemu elementu tabele. Če je, izpišemo
+# trenutni indeks.
+for indeks in range(len(tabela)):
+  if tabela[indeks] == najmanjsi:
+    print(indeks)
+</pre>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Zapri</button>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
 		<!-- Page Content -->
 		<div id="page-content-wrapper">
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-md-6">
 <!-- Left column start -->
-<h1>*Prirejanje vrednosti tabelaričnega tipa</h1>
+<h4>Vaja</h4>
 
-<p align="justify">Oglejmo si sledeči primer:
+<div class="alert alert-info" role="alert">
+<p align="justify">Napiši program, ki za podano tabelo izpiše indekse vseh najmanjših elementov (če jih je več). Na primer, za tabelo <code>[30, 20, 20, 80, 20, 40]</code> naj program izpiše indekse 1, 2 in 4.</p>
+<p>
+<button type="button" class="btn btn-info" data-toggle="modal" data-target="#hint1"><span class="fa fa-question"></span> Namig 1</button>
+<button type="button" class="btn btn-info" data-toggle="modal" data-target="#hint2"><span class="fa fa-question"></span> Namig 2</button>
+<button type="button" class="btn btn-info" data-toggle="modal" data-target="#solution1"><span class="fa fa-check"></span> Rešitev</button>
+</p>
+</div>
+
+<h1>Spreminjanje, dodajanje in odstranjevanje elementov</h1>
+
+<p align="justify">Element lahko dodamo na konec tabele, ali pa ga vstavimo pred element s podanim indeksom:
 <pre>
-&gt;&gt;&gt; a = [1, 2, 3]
-&gt;&gt;&gt; b = a
-&gt;&gt;&gt; a[1] = 7
-&gt;&gt;&gt; a
-[1, 7, 3]
+<img src="img/1224-10-2.png">
+</pre>
+Izpis:
+<pre>
+[10, 20, 30, 40, 100]
+[10, 60, 20, 30, 40, 100]
 </pre>
 </p>
-
-<p align="justify">Povsem pričakovano, kajne? Ko izpišemo še tabelo <code>b</code>, pa nas python šokira:
-<pre>
-&gt;&gt;&gt; b
-[1, 7, 3]
-</pre>
-</p>
-
-<p align="justify">Kako lahko sprememba tabele <code>a</code> vpliva na na tabelo <code>b</code>? Pričakovali bi, da stavek <code>b = a</code> ustvari <b>novo</b> tabelo <code>b</code> in vanjo skopira elemente tabele <code>a</code>. Vendar pa se to ne zgodi. Spremenljivka <code>a</code> namreč ne vsebuje celotne tabele <code>a</code>, pač pa zgolj njen <b>pomnilniški naslov</b>, torej mesto, kjer se tabela nahaja v računalnikovem pomnilniku. Pravimo, da je spremenljivka <code>a</code> zgolj <b>kazalec</b> na tabelo <nobr><code>[1, 2, 3]</code></nobr>. Ko izvedemo prireditev <code>b = a</code>, se v spremenljivko <code>b</code> prekopira zgolj pomnilniški naslov. Sedaj imamo torej dve spremenljivki, ki kažeta na isto tabelo:</p>
-
-<p align="center"><img src="img/kazalci1a.svg" onerror="this.src='kazalci1a.png'"></p>
-
-<p align="justify">Prireditev <code>a[1] = 7</code> nastavi drugi element tabele na vrednost 7:</p>
-
-<p align="center"><img src="img/kazalci1b.svg" onerror="this.src='kazalci1b.png'"></p>
 <!-- Left column end -->
 					</div>
 					<div class="col-md-6">
-						<br />
+                        <br />
 <!-- Right column start -->
-<p align="justify">Kako pa tabelo dejansko kopiramo (podvojimo)? Z izrazom <i>tabela</i><code>[:]</code>:
+<p align="justify">Element na nekem indeksu v tabeli spremenimo s preprostim prirejanjem:
 <pre>
->>> a = [1, 2, 3]
->>> b = a[:]
->>> a[1] = 7
->>> a
-[1, 7, 3]
->>> b
-[1, 2, 3]
+<img src="img/1224-10-1.png">
+</pre>
+Izpis:
+<pre>
+[1, 10, 3, 4]
 </pre>
 </p>
 
-<p align="justify">Sedaj imamo dejansko dve ločeni tabeli, na kateri kažeta spremenljivki <code>a</code> in <code>b</code>:</p>
-
-<p align="center"><img src="img/kazalci2.svg" onerror="this.src='kazalci2.png'"></p>
-
-<p align="justify">Pri preprostih podatkovnih tipih, kot so cela in realna števila, teh težav nimamo. Preizkusi sam(a)!</p>
-
-<div>
-<form>
-<p><textarea id="interactive"></textarea></p>
-</form>
-</div>
+<br />
+<p align="justify">Element lahko iz tabele tudi odstranimo:
+<pre>
+<img src="img/1224-10-3.png">
+</pre>
+Izpis:
+<pre>
+[30, 80, 60, 70, 50]
+</pre>
+</p>
 <!-- Right column end -->
 					</div>
 				</div>
@@ -208,26 +281,26 @@
 			<div class="col-md-12">
 				<center>
 				<ul class="pagination pagination-sm">
-					<li><a href="../1203/index.html" aria-label="Previous Unit"><span aria-hidden="true">&laquo;</span></a></li>
-					<li><a href="../1204/index9.html" aria-label="Previous Page"><span aria-hidden="true">&#x2039;</span></a></li>
-					<li><a href="../1204/index.html">55</a></li>
-					<li><a href="../1204/index1.html">56</a></li>
-					<li><a href="../1204/index2.html">57</a></li>
-					<li><a href="../1204/index3.html">58</a></li>
-					<li><a href="../1204/index4.html">59</a></li>
-					<li><a href="../1204/index5.html">60</a></li>
-					<li><a href="../1204/index6.html">61</a></li>
-					<li><a href="../1204/index7.html">62</a></li>
-					<li><a href="../1204/index8.html">63</a></li>
-					<li><a href="../1204/index9.html">64</a></li>
-					<li class="active"><a href="#">65</a></li>
-					<li><a href="../1204/index11.html">66</a></li>
-					<li><a href="../1204/index12.html">67</a></li>
-					<li><a href="../1204/index13.html">68</a></li>
-					<li><a href="../1204/index14.html">69</a></li>
-					<li><a href="../1204/index15.html">70</a></li>
-					<li><a href="../1204/index11.html" aria-label="Next Page"><span aria-hidden="true">&#x203A;</span></a></li>
-					<li><a href="../1205/index.html" aria-label="Next Unit"><span aria-hidden="true">&raquo;</span></a></li>
+					<li><a href="../1223/index.html" aria-label="Previous Unit"><span aria-hidden="true">&laquo;</span></a></li>
+					<li><a href="../1224/index9.html" aria-label="Previous Page"><span aria-hidden="true">&#x2039;</span></a></li>
+					<li><a href="../1224/index.html">37</a></li>
+					<li><a href="../1224/index1.html">38</a></li>
+					<li><a href="../1224/index2.html">39</a></li>
+					<li><a href="../1224/index3.html">40</a></li>
+					<li><a href="../1224/index4.html">41</a></li>
+					<li><a href="../1224/index5.html">42</a></li>
+					<li><a href="../1224/index6.html">43</a></li>
+					<li><a href="../1224/index7.html">44</a></li>
+					<li><a href="../1224/index8.html">45</a></li>
+					<li><a href="../1224/index9.html">46</a></li>
+					<li class="active"><a href="#">47</a></li>
+					<li><a href="../1224/index11.html">48</a></li>
+					<li><a href="../1224/index12.html">49</a></li>
+					<li><a href="../1224/index13.html">50</a></li>
+					<li><a href="../1224/index14.html">51</a></li>
+					<li><a href="../1224/index15.html">52</a></li>
+					<li><a href="../1224/index11.html" aria-label="Next Page"><span aria-hidden="true">&#x203A;</span></a></li>
+					<li><a href="../1225/index.html" aria-label="Next Unit"><span aria-hidden="true">&raquo;</span></a></li>
 				</ul>
 				</center>
 			</div>
@@ -259,17 +332,6 @@
 		$("#wrapper").toggleClass("toggled");
 	});
 	</script>
-
-	<!-- eXe Project -->
-	<script src="../js/exe/common.js"></script>
-
-	<!-- Skulpt and CodeMirror -->
-	<script src="../js/skulpt/codemirrorepl.js"></script>
-	<script src="../js/skulpt/repl.js"></script>
-	<script src="../js/skulpt/skulpt.js"></script>
-	<script src="../js/skulpt/skulpt-stdlib.js"></script>
-	<script src="../js/skulpt/python.js"></script>
-	<script>Sk.python3 = true;</script>
 
 
 <!-- CookieCuttr -->
