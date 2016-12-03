@@ -13,4 +13,4 @@ Blockly.Blocks.lists.HUE=260      => Blockly.Blocks.lists.HUE=10
 //Blockly.Blocks.colour.HUE=20    => Blockly.Blocks.colour.HUE=140
 
 Blockly.Blocks.variables.HUE=330  => Blockly.Blocks.variables.HUE=280
-Blockly.Blocks.procedures.HUE=290 => Blockly.Blocks.procedures.HUE=90
+Blockly.Blocks.procedures.HUE=290 => Blockly.Blocks.procedures.HUE=140

@@ -7,7 +7,7 @@ FROM:
 Blockly.Python.finish=function(a){var b=[],c=[],d;for(d in Blockly.Python.definitions_){var e=Blockly.Python.definitions_[d];e.match(/^(from\s+\S+\s+)?import\s+\S+/)?b.push(e):c.push(e)}delete Blockly.Python.definitions_;delete Blockly.Python.functionNames_;Blockly.Python.variableDB_.reset();return(b.join("\n")+"\n\n"+c.join("\n\n")).replace(/\n\n+/g,"\n\n").replace(/\n*$/,"\n\n\n")+a};
 
 TO:
-Blockly.Python.finish=function(a){var b=[],c=[],d;for(d in Blockly.Python.definitions_){var e=Blockly.Python.definitions_[d];e.match(/^(from\s+\S+\s+)?import\s+\S+/)?b.push(e):c.push(e)}delete Blockly.Python.definitions_;delete Blockly.Python.functionNames_;Blockly.Python.variableDB_.reset();return(b.join("\n")/*+"\n\n"+c.join("\n\n")*/).replace(/\n\n+/g,"\n\n").replace(/\n*$/,"\n\n")+a};
+Blockly.Python.finish=function(a){var b=[],c=[],d;for(d in Blockly.Python.definitions_){var e=Blockly.Python.definitions_[d];e.match(/^(from\s+\S+\s+)?import\s+\S+/)?b.push(e):c.push(e)}/*Remove variable declarations = first element of array*/c.splice(0,1);delete Blockly.Python.definitions_;delete Blockly.Python.functionNames_;Blockly.Python.variableDB_.reset();return(b.join("\n")+"\n\n"+c.join("\n\n")).replace(/\n\n+/g,"\n\n").replace(/\n*$/,"\n\n")+a};Blockly.Python.scrubNakedValue=function(a){return a+"\n"};
 
 
 /*
@@ -35,6 +35,7 @@ Blockly.Python.valueToCode(a,"ADD"+c,Blockly.Python.ORDER_NONE)||"''";a=Blockly.
 TO:
 Blockly.Python.text_prompt_ext=function(a){var msg=Blockly.Python.valueToCode(a,"TEXT",Blockly.Python.ORDER_NONE)||"''";if(a.getFieldValue("TYPE")=="NUMBER"){return["float(input("+msg+"))"]}else{return["input("+msg+")"]}}
 
+
 /*
  * Change how python code for for loop is generated:
  * =================================================
@@ -48,3 +49,19 @@ l(e,"_inc");a="number"==typeof c&&"number"==typeof d?c<d?h(c,d,e):k(c,d,e):a(c,d
 
 TO:
 Blockly.Python.controls_for=function(a){var b=Blockly.Python.variableDB_.getName(a.getFieldValue("VAR"), Blockly.Variables.NAME_TYPE),c=Blockly.Python.valueToCode(a,"FROM",Blockly.Python.ORDER_NONE)||"0",d=Blockly.Python.valueToCode(a,"TO",Blockly.Python.ORDER_NONE)||"0",e=Blockly.Python.valueToCode(a,"BY",Blockly.Python.ORDER_NONE)||"1",f=Blockly.Python.statementToCode(a,"DO"),f=Blockly.Python.addLoopTrap(f,a.id)||Blockly.Python.PASS,g="";if(Blockly.isNumber(e)&&parseFloat(e)===1){g+="for "+b+" in range("+c+", "+d+"):\n"+f;}else{g+="for "+b+" in range("+c+", "+d+", "+e+"):\n"+f;}return g;};
+
+
+
+
+/*
+ * Change how sublist ranges (uppor and lower index) work:
+ * =======================================================
+ */
+
+FROM:
+Blockly.Python.lists_getSublist=function(a){var b=Blockly.Python.valueToCode(a,"LIST",Blockly.Python.ORDER_MEMBER)||"[]",c=a.getFieldValue("WHERE1"),d=a.getFieldValue("WHERE2");switch(c){case "FROM_START":c=Blockly.Python.getAdjustedInt(a,"AT1");"0"==c&&(c="");break;case "FROM_END":c=Blockly.Python.getAdjustedInt(a,"AT1",1,!0);break;case "FIRST":c="";break;default:throw"Unhandled option (lists_getSublist)";}switch(d){case "FROM_START":a=Blockly.Python.getAdjustedInt(a,"AT2",1);break;case "FROM_END":a=
+Blockly.Python.getAdjustedInt(a,"AT2",0,!0);Blockly.isNumber(String(a))?"0"==a&&(a=""):(Blockly.Python.definitions_.import_sys="import sys",a+=" or sys.maxsize");break;case "LAST":a="";break;default:throw"Unhandled option (lists_getSublist)";}return[b+"["+c+" : "+a+"]",Blockly.Python.ORDER_MEMBER]};
+
+TO:
+Blockly.Python.lists_getSublist=function(a){var b=Blockly.Python.valueToCode(a,"LIST",Blockly.Python.ORDER_MEMBER)||"[]",c=a.getFieldValue("WHERE1"),d=a.getFieldValue("WHERE2");switch(c){case "FROM_START":c=Blockly.Python.getAdjustedInt(a,"AT1");"0"==c&&(c="");break;case "FROM_END":c=Blockly.Python.getAdjustedInt(a,"AT1",1,!1);break;case "FIRST":c="";break;default:throw"Unhandled option (lists_getSublist)";}switch(d){case "FROM_START":a=Blockly.Python.getAdjustedInt(a,"AT2",0);break;case "FROM_END":a=
+Blockly.Python.getAdjustedInt(a,"AT2",0,!1);Blockly.isNumber(String(a))?"0"==a&&(a=""):(Blockly.Python.definitions_.import_sys="import sys",a+=" or sys.maxsize");break;case "LAST":a="";break;default:throw"Unhandled option (lists_getSublist)";}return[b+"["+c+" : "+a+"]",Blockly.Python.ORDER_MEMBER]};

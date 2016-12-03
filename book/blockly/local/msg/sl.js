@@ -14,6 +14,7 @@ var MSG = {
   catColour: "Barve",
   catVariables: "Spremenljivke",
   catFunctions: "Funkcije",
+  catTurtle: "Želva",
   listVariable: "tabela",
   textVariable: "besedilo",
   httpRequestError: "Pojavila se je težava z zahtevo.",

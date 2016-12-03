@@ -41,6 +41,43 @@ Blockly.Blocks.text_comment = {
     }
 };
 
+Blockly.Blocks.text_chr = {
+    init: function() {
+        this.jsonInit({
+            message0: "vrni znak iz številske kode %1",
+            args0: [{
+                type: "input_value",
+                name: "VALUE",
+				check: "Number"
+            }],
+			inputsInline: false,
+            output: String,
+            colour: Blockly.Blocks.texts.HUE,
+            tooltip: "Vrne znak iz številske kode.",
+            helpUrl: ""
+        })
+    }
+};
+
+Blockly.Blocks.math_ord = {
+    init: function() {
+        this.jsonInit({
+            message0: "vrni številsko kodo iz znaka %1",
+            args0: [{
+                type: "input_value",
+                name: "TEXT",
+				check: "String"
+            }],
+			inputsInline: false,
+            output: Number,
+            colour: Blockly.Blocks.math.HUE,
+            tooltip: "Vrne številsko kodo iz znaka.",
+            helpUrl: ""
+        })
+    }
+};
+
+
 /**
  * Custom block generator functions
  */
@@ -58,10 +95,26 @@ Blockly.Python.math_floor_division = function(a) {
 Blockly.JavaScript.text_comment = function(a) {
     var str = Blockly.JavaScript.valueToCode(a, "TEXT", Blockly.JavaScript.ORDER_NONE);
     return "// " + str.substr(1, str.length-2) + "\n"
-    //return "// " + (Blockly.JavaScript.valueToCode(a, "TEXT", Blockly.JavaScript.ORDER_NONE)) + "\n"
 };
 Blockly.Python.text_comment = function(a) {
     var str = Blockly.Python.valueToCode(a, "TEXT", Blockly.Python.ORDER_NONE);
     return "# " + str.substr(1, str.length-2) + "\n"
-    //return "# " + (Blockly.Python.valueToCode(a, "TEXT", Blockly.Python.ORDER_NONE)) + "\n"
+};
+
+Blockly.JavaScript.text_chr = function(a) {
+    var num = Blockly.JavaScript.valueToCode(a, "NUM", Blockly.JavaScript.ORDER_NONE);
+    return ["String.fromCharCode(" + num + ")", Blockly.JavaScript.ORDER_FUNCTION_CALL]
+};
+Blockly.Python.text_chr = function(a) {
+    var num = Blockly.Python.valueToCode(a, "NUM", Blockly.Python.ORDER_NONE);
+    return ["chr(" + num + ")", Blockly.JavaScript.ORDER_FUNCTION_CALL]
+};
+
+Blockly.JavaScript.math_ord = function(a) {
+    var str = Blockly.JavaScript.valueToCode(a, "TEXT", Blockly.JavaScript.ORDER_NONE);
+    return [str + ".charCodeAt(0)", Blockly.JavaScript.ORDER_FUNCTION_CALL]
+};
+Blockly.Python.math_ord = function(a) {
+    var str = Blockly.Python.valueToCode(a, "TEXT", Blockly.Python.ORDER_NONE);
+    return ["ord(" + str + ")", Blockly.JavaScript.ORDER_FUNCTION_CALL]
 };

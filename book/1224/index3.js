@@ -236,8 +236,6 @@ Code12243a.init = function() {
             wheel: true}
       });
 
-  Code12243a.loadBlocks('');
-
   if ('BlocklyStorage' in window) {
     // Hook a save function onto unload.
     BlocklyStorage.backupOnUnload(Code12243a.workspace);

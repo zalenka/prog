@@ -1,0 +1,291 @@
+[{
+  "type": "turtle_move",
+  "message0": "premakni se %1 za %2",
+  "args0": [
+    {
+      "type": "field_dropdown",
+      "name": "DIR",
+      "options": [
+        [
+          "naprej",
+          "FORWARD"
+        ],
+        [
+          "nazaj",
+          "BACKWARD"
+        ]
+      ]
+    },
+    {
+      "type": "input_value",
+      "name": "MOVE",
+      "check": "Number"
+    }
+  ],
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": 70,
+  "tooltip": "",
+  "helpUrl": "http://www.example.com/"
+},
+{
+  "type": "turtle_turn",
+  "message0": "obrni se %1 za %2",
+  "args0": [
+    {
+      "type": "field_dropdown",
+      "name": "DIR",
+      "options": [
+        [
+          "levo",
+          "LEFT"
+        ],
+        [
+          "desno",
+          "RIGHT"
+        ]
+      ]
+    },
+    {
+      "type": "input_value",
+      "name": "TURN",
+      "check": "Number"
+    }
+  ],
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": 70,
+  "tooltip": "",
+  "helpUrl": "http://www.example.com/"
+},
+{
+  "type": "turtle_width",
+  "message0": "nastavi širino na %1",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "WIDTH",
+      "check": "Number"
+    }
+  ],
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": 70,
+  "tooltip": "",
+  "helpUrl": "http://www.example.com/"
+},
+{
+  "type": "turtle_pen",
+  "message0": "svinčnik %1",
+  "args0": [
+    {
+      "type": "field_dropdown",
+      "name": "PEN",
+      "options": [
+        [
+          "dol",
+          "DOWN"
+        ],
+        [
+          "gor",
+          "UP"
+        ]
+      ]
+    }
+  ],
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": 70,
+  "tooltip": "",
+  "helpUrl": "http://www.example.com/"
+},
+{
+  "type": "turtle_show",
+  "message0": "%1 želvo",
+  "args0": [
+    {
+      "type": "field_dropdown",
+      "name": "SHOWHIDE",
+      "options": [
+        [
+          "pokaži",
+          "SHOW"
+        ],
+        [
+          "hide",
+          "HIDE"
+        ]
+      ]
+    }
+  ],
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": 70,
+  "tooltip": "",
+  "helpUrl": "http://www.example.com/"
+},
+{
+  "type": "turtle_shape",
+  "message0": "nastavi obliko želve na %1",
+  "args0": [
+    {
+      "type": "field_dropdown",
+      "name": "SHAPE",
+      "options": [
+        [
+          "klasično",
+          "CLASSIC"
+        ],
+        [
+          "krog",
+          "CIRCLE"
+        ],
+        [
+          "kvadrat",
+          "SQUARE"
+        ],
+        [
+          "puščica",
+          "ARROW"
+        ],
+        [
+          "trikotnik",
+          "TRIANGLE"
+        ],
+        [
+          "želva",
+          "TURTLE"
+        ]
+      ]
+    }
+  ],
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": 70,
+  "tooltip": "",
+  "helpUrl": "http://www.example.com/"
+},
+{
+  "type": "turtle_setpos",
+  "message0": "nastavi položaj na %1 %2",
+  "args0": [
+    {
+      "type": "field_number",
+      "name": "POSX",
+      "value": 0,
+      "min": -200,
+      "max": 200
+    },
+    {
+      "type": "field_number",
+      "name": "POSY",
+      "value": 0,
+      "min": -200,
+      "max": 200
+    }
+  ],
+  "inputsInline": false,
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": 70,
+  "tooltip": "",
+  "helpUrl": "http://www.example.com/"
+},
+{
+  "type": "turtle_color",
+  "message0": "nastavi barvo na %1",
+  "args0": [
+    {
+      "type": "field_colour",
+      "name": "COLOR",
+      "colour": "#000000"
+    }
+  ],
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": 70,
+  "tooltip": "",
+  "helpUrl": "http://www.example.com/"
+},
+{
+  "type": "turtle_circle",
+  "message0": "nariši krog s polmerom %1",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "NAME",
+      "check": "Number"
+    }
+  ],
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": 70,
+  "tooltip": "",
+  "helpUrl": "http://www.example.com/"
+},
+{
+  "type": "turtl_arc",
+  "message0": "nariši lok s polmerom %1 %2 in kotom %3",
+  "args0": [
+    {
+      "type": "field_number",
+      "name": "RADIUS",
+      "value": 0
+    },
+    {
+      "type": "input_dummy"
+    },
+    {
+      "type": "field_angle",
+      "name": "ANGLE",
+      "angle": 60
+    }
+  ],
+  "inputsInline": true,
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": 70,
+  "tooltip": "",
+  "helpUrl": "http://www.example.com/"
+},
+{
+  "type": "turtle_write",
+  "message0": "izpiši %1",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "WRITE",
+      "check": "String"
+    }
+  ],
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": 70,
+  "tooltip": "",
+  "helpUrl": "http://www.example.com/"
+},
+{
+  "type": "turtle_pos",
+  "message0": "vrni položaj želve",
+  "output": null,
+  "colour": 70,
+  "tooltip": "",
+  "helpUrl": "http://www.example.com/"
+},
+{
+  "type": "turtle_isdown",
+  "message0": "svinčnik riše",
+  "output": null,
+  "colour": 70,
+  "tooltip": "",
+  "helpUrl": "http://www.example.com/"
+},
+{
+  "type": "turtle_reset",
+  "message0": "počisti vse",
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": 70,
+  "tooltip": "",
+  "helpUrl": "http://www.example.com/"
+}]
