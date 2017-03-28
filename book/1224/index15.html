@@ -304,10 +304,10 @@
 </pre>
 bi program izpisal sledeče:
 <pre>
-"Dejan"
-"Ana"
-"Eva"
-"Bojan"
+Dejan
+Ana
+Eva
+Bojan
 </pre></p>
 <p>
 <button type="button" class="btn btn-info" data-toggle="modal" data-target="#hint111"><span class="fa fa-question"></span> Namig 1</button>
@@ -356,6 +356,13 @@ bi program izpisal sledeče:
     <block type="logic_boolean"></block>
   </category>
   <category name="{catLoops}" colour="320">
+    <block type="controls_repeat_ext">
+      <value name="TIMES">
+        <shadow type="math_number">
+          <field name="NUM">10</field>
+        </shadow>
+      </value>
+    </block>
     <block type="controls_whileUntil"></block>
     <block type="controls_for">
       <value name="FROM">
@@ -391,6 +398,21 @@ bi program izpisal sledeče:
         </shadow>
       </value>
     </block>
+    <block type="math_single">
+      <value name="NUM">
+        <shadow type="math_number">
+          <field name="NUM">9</field>
+        </shadow>
+      </value>
+    </block>
+    <block type="math_trig">
+      <value name="NUM">
+        <shadow type="math_number">
+          <field name="NUM">45</field>
+        </shadow>
+      </value>
+    </block>
+    <block type="math_constant"></block>
     <block type="math_modulo">
       <value name="DIVIDEND">
         <shadow type="math_number">

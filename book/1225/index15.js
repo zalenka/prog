@@ -147,21 +147,21 @@ Code122515a.selected = 'blocks';
  * @param {string} clickedName Name of tab clicked.
  */
 Code122515a.tabClick = function(clickedName) {
-  if (document.getElementById('tab1_blocks').className == 'tabon') {
+  if (document.getElementById('tab3_blocks').className == 'tabon') {
     Code122515a.workspace.setVisible(false);
   }
   // Deselect all tabs and hide all panes.
   for (var i = 0; i < Code122515a.TABS_.length; i++) {
     var name = Code122515a.TABS_[i];
-    document.getElementById('tab1_' + name).className = 'taboff';
-    document.getElementById('content1_' + name).style.visibility = 'hidden';
+    document.getElementById('tab3_' + name).className = 'taboff';
+    document.getElementById('content3_' + name).style.visibility = 'hidden';
   }
 
   // Select the active tab.
   Code122515a.selected = clickedName;
-  document.getElementById('tab1_' + clickedName).className = 'tabon';
+  document.getElementById('tab3_' + clickedName).className = 'tabon';
   // Show the selected pane.
-  document.getElementById('content1_' + clickedName).style.visibility =
+  document.getElementById('content3_' + clickedName).style.visibility =
       'visible';
   Code122515a.renderContent();
   if (clickedName == 'blocks') {
@@ -174,9 +174,9 @@ Code122515a.tabClick = function(clickedName) {
  * Populate the currently selected pane with content generated from the blocks.
  */
 Code122515a.renderContent = function() {
-  var content = document.getElementById('content1_' + Code122515a.selected);
+  var content = document.getElementById('content3_' + Code122515a.selected);
   // Initialize the pane.
-  if (content.id == 'content1_python') {
+  if (content.id == 'content3_python') {
     var code = Blockly.Python.workspaceToCode(Code122515a.workspace);
     content.textContent = code;
     if (typeof prettyPrintOne == 'function') {
@@ -193,11 +193,11 @@ Code122515a.renderContent = function() {
 Code122515a.init = function() {
   Code122515a.initLanguage();
 
-  var container = document.getElementById('content1_area');
+  var container = document.getElementById('content3_area');
   var onresize = function(e) {
     var bBox = Code122515a.getBBox_(container);
     for (var i = 0; i < Code122515a.TABS_.length; i++) {
-      var el = document.getElementById('content1_' + Code122515a.TABS_[i]);
+      var el = document.getElementById('content3_' + Code122515a.TABS_[i]);
       el.style.top = bBox.y + 'px!important';
       el.style.left = bBox.x + 'px!important';
       // Height and width need to be set, read back, then set again to
@@ -209,7 +209,7 @@ Code122515a.init = function() {
     }
     // Make the 'Blocks' tab line up with the toolbox.
     if (Code122515a.workspace && Code122515a.workspace.toolbox_.width) {
-      document.getElementById('tab1_blocks').style.minWidth =
+      document.getElementById('tab3_blocks').style.minWidth =
           (Code122515a.workspace.toolbox_.width - 38) + 'px';
           // Account for the 19 pixel margin and on each side.
     }
@@ -217,12 +217,12 @@ Code122515a.init = function() {
   window.addEventListener('resize', onresize, false);
 
   // Interpolate translated messages into toolbox.
-  var toolboxText = document.getElementById('toolbox').outerHTML;
+  var toolboxText = document.getElementById('toolbox3').outerHTML;
   toolboxText = toolboxText.replace(/{(\w+)}/g,
       function(m, p1) {return MSG[p1]});
   var toolboxXml = Blockly.Xml.textToDom(toolboxText);
 
-  Code122515a.workspace = Blockly.inject('content1_blocks',
+  Code122515a.workspace = Blockly.inject('content3_blocks',
       {grid:
           {spacing: 15,
            length: 0,
@@ -236,8 +236,6 @@ Code122515a.init = function() {
             wheel: true}
       });
 
-  Code122515a.loadBlocks('');
-
   if ('BlocklyStorage' in window) {
     // Hook a save function onto unload.
     BlocklyStorage.backupOnUnload(Code122515a.workspace);
@@ -245,13 +243,18 @@ Code122515a.init = function() {
 
   Code122515a.tabClick(Code122515a.selected);
 
-  Code122515a.bindClick('trashButton',
+  Code122515a.bindClick('trashButton3',
       function() {Code122515a.discard(); Code122515a.renderContent();});
-  Code122515a.bindClick('runButton', Code122515a.runJS);
+  Code122515a.bindClick('runButton3', Code122515a.runJS);
+  Code122515a.bindClick('solveButton3',
+      function() {Code122515a.solve(); Code122515a.renderContent();});
+
+  // Load workspace initial content
+  Blockly.Xml.domToWorkspace(document.getElementById('workspace3'), Code122515a.workspace);
 
   for (var i = 0; i < Code122515a.TABS_.length; i++) {
     var name = Code122515a.TABS_[i];
-    Code122515a.bindClick('tab1_' + name,
+    Code122515a.bindClick('tab3_' + name,
         function(name_) {return function() {Code122515a.tabClick(name_);};}(name));
   }
   onresize();
@@ -270,7 +273,7 @@ Code122515a.initLanguage = function() {
   document.head.parentElement.setAttribute('lang', Code122515a.LANG);
 
   // Inject language strings.
-  document.getElementById('tab1_blocks').textContent = MSG['blocks'];
+  document.getElementById('tab3_blocks').textContent = MSG['blocks'];
 };
 
 /**
@@ -278,7 +281,7 @@ Code122515a.initLanguage = function() {
  * Just a quick and dirty eval.  Catch infinite loops.
  */
 Code122515a.runJS = function() {
-  $('#output').html(''); // Erase content of the output
+  $('#output2').html(''); // Erase content of the output
   Blockly.JavaScript.INFINITE_LOOP_TRAP = '  checkTimeout();\n';
   var timeouts = 0;
   var checkTimeout = function() {
@@ -299,9 +302,24 @@ Code122515a.runJS = function() {
  * Discard all blocks from the workspace.
  */
 Code122515a.discard = function() {
-  $('#output').html(''); // Erase content of the output
+  $('#output2').html(''); // Erase content of the output
   Code122515a.workspace.clear();
   window.location.hash = '';
+
+  // Load workspace initial content
+  Blockly.Xml.domToWorkspace(document.getElementById('workspace3'), Code122515a.workspace);
+};
+
+/**
+ * Solve the task by updating certain block(s).
+ */
+Code122515a.solve = function() {
+  $('#output3').html(''); // Erase content of the output
+  Code122515a.workspace.clear();
+  window.location.hash = '';
+
+  // Load workspace initial content
+  Blockly.Xml.domToWorkspace(document.getElementById('solution3'), Code122515a.workspace);
 };
 
 // Load the Code demo's language strings.

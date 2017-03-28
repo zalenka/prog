@@ -142,43 +142,18 @@
 			</div>
 		</div>
 
-		<!-- Modal (popup) window: Solution 4 -->
-		<div id="solution4" class="modal fade" role="dialog">
-			<div class="modal-dialog modal-lg">
+		<!-- Modal (popup) window: Hint 3 -->
+		<div id="hint3" class="modal fade" role="dialog">
+			<div class="modal-dialog">
 
 				<!-- Modal content-->
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h4 class="modal-title">Rešitev</h4>
+						<h4 class="modal-title">Namig</h4>
 					</div>
 					<div class="modal-body">
-<pre>
-<img src="img/1225-15-4.png">
-</pre>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">Zapri</button>
-					</div>
-				</div>
-
-			</div>
-		</div>
-
-		<!-- Modal (popup) window: Solution 5 -->
-		<div id="solution5" class="modal fade" role="dialog">
-			<div class="modal-dialog modal-lg">
-
-				<!-- Modal content-->
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h4 class="modal-title">Rešitev</h4>
-					</div>
-					<div class="modal-body">
-<pre>
-<img src="img/1225-15-5.png">
-</pre>
+						<p align="justify">Pri stavku <code>vrni</code> smo pozabili povedati, kaj vračamo; in ker smo inicializirali spremenljivko <code>prejsnji</code> na 0, se lahko zgodi, da vrnemo napačen rezultat, če je <code>a[0] = 0</code> in <code>a[1] &ne; 0</code>.</p>
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default" data-dismiss="modal">Zapri</button>
@@ -192,71 +167,47 @@
 		<div id="page-content-wrapper">
 			<div class="container-fluid">
 				<div class="row">
-					<div class="col-md-6">
-<!-- Left column start -->
+					<div class="col-md-12">
+<!-- Content row start -->
 <h1>Naloge</h1>
 
 <div class="alert alert-info" role="alert">
 <p>
-	<span class="label label-primary"><b>4</b></span>
-	<span class="fa fa-star pull-right"></span>
+	<span class="label label-primary"><b>3</b></span>
 </p>
-<p align="justify">Koliko dni si star(a) danes? Napiši funkcijo <code>KolikoDni(dan1, mesec1, leto1, dan2, mesec2, leto2)</code>,
-ki vrne število dni med danima datumoma. (Predpostavi, da sta obe letnici ≥ 1900.)</p>
-<p align="justify"><b>Namig:</b> Koristno si je najprej napisati funkcijo, ki posameznemu datumu priredi neko zaporedno številko (recimo število dni od prvega januarja 1900).</p>
-<p>
-<button type="button" class="btn btn-info" data-toggle="modal" data-target="#solution4"><span class="fa fa-check"></span> Rešitev</button>
-</p>
-</div>
-<!-- Left column end -->
-					</div>
-					<div class="col-md-6">
-						<br />
-<!-- Right column start -->
-<div class="alert alert-danger" role="alert">
-<p>
-	<span class="label label-danger"><b>5</b></span>
-	<span class="fa fa-star pull-right"></span>
-	<span class="fa fa-star pull-right"></span>
-</p>
-<p align="justify">Fibonaccijevo zaporedje je zaporedje števil, ki se začne z 0 in 1, od tam naprej pa je vsako število vsota prejšnjih dveh: <nobr>0, 1, 1, 2, 3, 5, 8, 13, 21, ...</nobr> Napiši funkcijo <code>Fib(n)</code>, ki vrne <i>n</i>-to število tega zaporedja.</p>
-<p align="justify">To nalogo lahko rešiš na vsaj dva različna načina: z zanko ali pa z rekurzijo. Preizkusi obe rešitvi in primerjaj, katera je hitrejša pri malo večjih <i>n</i> in zakaj.</p>
-<p>
-<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#solution5"><span class="fa fa-check"></span> Rešitev</button>
-</p>
-</div>
-<!-- Right column end -->
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-12">
-<!-- Second row start -->
+<p align="justify">Naslednja funkcija naj bi vrnila prvi tak element tabele <code>a</code>, ki se v njej pojavi dvakrat zaporedoma; če se noben element ne pojavi dvakrat zaporedoma, naj funkcija vrne 0.  Vendar pa ta funkcija vsebuje napake; popravi jo.<br />
+(Primer: <code>PrviDvakrat([3, 8, 8, 8, 5, 7, 7, 9])</code> mora vrniti 8.)</p>
+
 <table width="100%">
   <tr id="tabRow" height="1em">
-    <td id="tab1_blocks" class="tabon">...</td>
+    <td id="tab3_blocks" class="tabon">...</td>
     <td class="tabmin">&nbsp;</td>
-    <td id="tab1_python" class="taboff">Python</td>
+    <td id="tab3_python" class="taboff">Python</td>
     <td class="tabmin">&nbsp;</td>
     <td class="tabmax" align="right">
-      <button type="button" class="btn btn-primary"  id="runButton"><span class="fa fa-play"></span> Izvedi</button>
-      <button type="button" class="btn btn-primary"  id="trashButton">Počisti</button>
     </td>
   </tr>
   <tr>
-    <td colspan="5" id="content1_area"></td>
+    <td colspan="5" id="content3_area"></td>
   </tr>
 </table>
 <table width="100%">
   <tr>
     <td style="position:relative; height:400px;">
-      <div id="content1_blocks" class="content"></div>
-      <pre id="content1_python" class="content"></pre>
+      <div id="content3_blocks" class="content"></div>
+      <pre id="content3_python" class="content"></pre>
     </td>
   </tr>
 </table>
-<div style="margin-top:10px"><pre id="output"></pre></div>
+<div style="margin-top:10px">
+  <button type="button" class="btn btn-info"  id="runButton3"><span class="fa fa-play"></span> Izvedi</button>
+  <button type="button" class="btn btn-info"  id="trashButton3">Počisti</button>
+  <button type="button" class="btn btn-info" data-toggle="modal" data-target="#hint3"><span class="fa fa-question"></span> Namig</button>
+  <button type="button" class="btn btn-info"  id="solveButton3"><span class="fa fa-check"></span> Rešitev</button>
+</div>
+<div style="margin-top:10px"><pre id="output3"></pre></div>
 
-<xml id="toolbox" style="display: none">
+<xml id="toolbox3" style="display: none">
   <category name="{catLogic}" colour="200">
     <block type="controls_if"></block>
     <block type="logic_compare"></block>
@@ -377,7 +328,408 @@ ki vrne število dni med danima datumoma. (Predpostavi, da sta obe letnici ≥ 1
   <category name="{catVariables}" colour="280" custom="VARIABLE"></category>
   <category name="{catFunctions}" colour="120" custom="PROCEDURE"></category>
 </xml>
-<!-- Second row end -->
+
+<xml id="workspace3" style="display: none">
+  <block type="procedures_defreturn" id="10" x="10" y="10">
+    <mutation>
+      <arg name="a"></arg>
+    </mutation>
+    <field name="NAME">PrviDvakrat</field>
+    <comment pinned="false" h="80" w="160">Opiši to funkcijo...</comment>
+    <statement name="STACK">
+      <block type="variables_set" id="11">
+        <field name="VAR">n</field>
+        <value name="VALUE">
+          <block type="lists_length" id="12">
+            <value name="VALUE">
+              <block type="variables_get" id="13">
+                <field name="VAR">a</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <next>
+          <block type="variables_set" id="14">
+            <field name="VAR">prejsnji</field>
+            <value name="VALUE">
+              <block type="math_number" id="15">
+                <field name="NUM">0</field>
+              </block>
+            </value>
+            <next>
+              <block type="controls_for" id="16">
+                <field name="VAR">i</field>
+                <value name="FROM">
+                  <shadow type="math_number" id="17">
+                    <field name="NUM">1</field>
+                  </shadow>
+                  <block type="math_number" id="18">
+                    <field name="NUM">0</field>
+                  </block>
+                </value>
+                <value name="TO">
+                  <shadow type="math_number" id="19">
+                    <field name="NUM">10</field>
+                  </shadow>
+                  <block type="variables_get" id="20">
+                    <field name="VAR">n</field>
+                  </block>
+                </value>
+                <value name="BY">
+                  <shadow type="math_number" id="21">
+                    <field name="NUM">1</field>
+                  </shadow>
+                </value>
+                <statement name="DO">
+                  <block type="procedures_ifreturn" id="22">
+                    <mutation value="1"></mutation>
+                    <value name="CONDITION">
+                      <block type="logic_compare" id="23">
+                        <field name="OP">EQ</field>
+                        <value name="A">
+                          <block type="lists_getIndex" id="24" collapsed="true">
+                            <mutation statement="false" at="true"></mutation>
+                            <field name="MODE">GET</field>
+                            <field name="WHERE">FROM_START</field>
+                            <value name="VALUE">
+                              <block type="variables_get" id="25">
+                                <field name="VAR">a</field>
+                              </block>
+                            </value>
+                            <value name="AT">
+                              <block type="variables_get" id="26">
+                                <field name="VAR">i</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="variables_get" id="27">
+                            <field name="VAR">prejsnji</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <value name="VALUE">
+                      <block type="logic_null" id="28"></block>
+                    </value>
+                    <next>
+                      <block type="variables_set" id="29">
+                        <field name="VAR">prejsnji</field>
+                        <value name="VALUE">
+                          <block type="lists_getIndex" id="30" collapsed="true">
+                            <mutation statement="false" at="true"></mutation>
+                            <field name="MODE">GET</field>
+                            <field name="WHERE">FROM_START</field>
+                            <value name="VALUE">
+                              <block type="variables_get" id="31">
+                                <field name="VAR">a</field>
+                              </block>
+                            </value>
+                            <value name="AT">
+                              <block type="variables_get" id="32">
+                                <field name="VAR">i</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <value name="RETURN">
+      <block type="math_number" id="33">
+        <field name="NUM">0</field>
+      </block>
+    </value>
+  </block>
+  <block type="variables_set" id="34" x="10" y="260">
+    <field name="VAR">t</field>
+    <value name="VALUE">
+      <block type="lists_create_with" id="35" inline="true">
+        <mutation items="8"></mutation>
+        <value name="ADD0">
+          <block type="math_number" id="36">
+            <field name="NUM">3</field>
+          </block>
+        </value>
+        <value name="ADD1">
+          <block type="math_number" id="37">
+            <field name="NUM">8</field>
+          </block>
+        </value>
+        <value name="ADD2">
+          <block type="math_number" id="38">
+            <field name="NUM">8</field>
+          </block>
+        </value>
+        <value name="ADD3">
+          <block type="math_number" id="39">
+            <field name="NUM">8</field>
+          </block>
+        </value>
+        <value name="ADD4">
+          <block type="math_number" id="40">
+            <field name="NUM">5</field>
+          </block>
+        </value>
+        <value name="ADD5">
+          <block type="math_number" id="41">
+            <field name="NUM">7</field>
+          </block>
+        </value>
+        <value name="ADD6">
+          <block type="math_number" id="42">
+            <field name="NUM">7</field>
+          </block>
+        </value>
+        <value name="ADD7">
+          <block type="math_number" id="43">
+            <field name="NUM">9</field>
+          </block>
+        </value>
+      </block>
+    </value>
+    <next>
+      <block type="text_print" id="44">
+        <value name="TEXT">
+          <shadow type="text" id="45">
+            <field name="TEXT">abc</field>
+          </shadow>
+          <block type="procedures_callreturn" id="46" inline="true">
+            <mutation name="PrviDvakrat">
+              <arg name="a"></arg>
+            </mutation>
+            <value name="ARG0">
+              <block type="variables_get" id="47">
+                <field name="VAR">t</field>
+              </block>
+            </value>
+          </block>
+        </value>
+      </block>
+    </next>
+  </block>
+</xml>
+
+<xml id="solution3" style="display: none">
+  <block type="procedures_defreturn" id="10" x="10" y="10">
+    <mutation>
+      <arg name="a"></arg>
+    </mutation>
+    <field name="NAME">PrviDvakrat</field>
+    <comment pinned="false" h="80" w="160">Opiši to funkcijo...</comment>
+    <statement name="STACK">
+      <block type="variables_set" id="11">
+        <field name="VAR">n</field>
+        <value name="VALUE">
+          <block type="lists_length" id="12">
+            <value name="VALUE">
+              <block type="variables_get" id="13">
+                <field name="VAR">a</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <next>
+          <block type="variables_set" id="14">
+            <field name="VAR">prejsnji</field>
+            <value name="VALUE">
+              <block type="math_number" id="15">
+                <field name="NUM">0</field>
+              </block>
+            </value>
+            <next>
+              <block type="controls_for" id="16">
+                <field name="VAR">i</field>
+                <value name="FROM">
+                  <shadow type="math_number" id="17">
+                    <field name="NUM">1</field>
+                  </shadow>
+                  <block type="math_number" id="18">
+                    <field name="NUM">0</field>
+                  </block>
+                </value>
+                <value name="TO">
+                  <shadow type="math_number" id="19">
+                    <field name="NUM">10</field>
+                  </shadow>
+                  <block type="variables_get" id="20">
+                    <field name="VAR">n</field>
+                  </block>
+                </value>
+                <value name="BY">
+                  <shadow type="math_number" id="21">
+                    <field name="NUM">1</field>
+                  </shadow>
+                </value>
+                <statement name="DO">
+                  <block type="procedures_ifreturn" id="22">
+                    <mutation value="1"></mutation>
+                    <value name="CONDITION">
+                      <block type="logic_operation" id="23">
+                        <field name="OP">AND</field>
+                        <value name="A">
+                          <block type="logic_compare" id="24" collapsed="true">
+                            <field name="OP">GT</field>
+                            <value name="A">
+                              <block type="variables_get" id="25">
+                                <field name="VAR">i</field>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="math_number" id="26">
+                                <field name="NUM">0</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="logic_compare" id="27">
+                            <field name="OP">EQ</field>
+                            <value name="A">
+                              <block type="lists_getIndex" id="28" collapsed="true">
+                                <mutation statement="false" at="true"></mutation>
+                                <field name="MODE">GET</field>
+                                <field name="WHERE">FROM_START</field>
+                                <value name="VALUE">
+                                  <block type="variables_get" id="29">
+                                    <field name="VAR">a</field>
+                                  </block>
+                                </value>
+                                <value name="AT">
+                                  <block type="variables_get" id="30">
+                                    <field name="VAR">i</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="variables_get" id="31">
+                                <field name="VAR">prejsnji</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <value name="VALUE">
+                      <block type="variables_get" id="32">
+                        <field name="VAR">prejsnji</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="variables_set" id="33">
+                        <field name="VAR">prejsnji</field>
+                        <value name="VALUE">
+                          <block type="lists_getIndex" id="34" collapsed="true">
+                            <mutation statement="false" at="true"></mutation>
+                            <field name="MODE">GET</field>
+                            <field name="WHERE">FROM_START</field>
+                            <value name="VALUE">
+                              <block type="variables_get" id="35">
+                                <field name="VAR">a</field>
+                              </block>
+                            </value>
+                            <value name="AT">
+                              <block type="variables_get" id="36">
+                                <field name="VAR">i</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <value name="RETURN">
+      <block type="math_number" id="37">
+        <field name="NUM">0</field>
+      </block>
+    </value>
+  </block>
+  <block type="variables_set" id="38" x="10" y="270">
+    <field name="VAR">t</field>
+    <value name="VALUE">
+      <block type="lists_create_with" id="39" inline="true">
+        <mutation items="8"></mutation>
+        <value name="ADD0">
+          <block type="math_number" id="40">
+            <field name="NUM">3</field>
+          </block>
+        </value>
+        <value name="ADD1">
+          <block type="math_number" id="41">
+            <field name="NUM">8</field>
+          </block>
+        </value>
+        <value name="ADD2">
+          <block type="math_number" id="42">
+            <field name="NUM">8</field>
+          </block>
+        </value>
+        <value name="ADD3">
+          <block type="math_number" id="43">
+            <field name="NUM">8</field>
+          </block>
+        </value>
+        <value name="ADD4">
+          <block type="math_number" id="44">
+            <field name="NUM">5</field>
+          </block>
+        </value>
+        <value name="ADD5">
+          <block type="math_number" id="45">
+            <field name="NUM">7</field>
+          </block>
+        </value>
+        <value name="ADD6">
+          <block type="math_number" id="46">
+            <field name="NUM">7</field>
+          </block>
+        </value>
+        <value name="ADD7">
+          <block type="math_number" id="47">
+            <field name="NUM">9</field>
+          </block>
+        </value>
+      </block>
+    </value>
+    <next>
+      <block type="text_print" id="48">
+        <value name="TEXT">
+          <shadow type="text" id="49">
+            <field name="TEXT">abc</field>
+          </shadow>
+          <block type="procedures_callreturn" id="50" inline="true">
+            <mutation name="PrviDvakrat">
+              <arg name="a"></arg>
+            </mutation>
+            <value name="ARG0">
+              <block type="variables_get" id="51">
+                <field name="VAR">t</field>
+              </block>
+            </value>
+          </block>
+        </value>
+      </block>
+    </next>
+  </block>
+</xml>
+</div>
+<!-- Content row end -->
 					</div>
 				</div>
 			</div>
@@ -405,6 +757,7 @@ ki vrne število dni med danima datumoma. (Predpostavi, da sta obe letnici ≥ 1
 					<li><a href="../1225/index14.html">85</a></li>
 					<li class="active"><a href="#">86</a></li>
 					<li><a href="../1225/index16.html">87</a></li>
+					<li><a href="../1225/index17.html">88</a></li>
 					<li><a href="../1225/index16.html" aria-label="Next Page"><span aria-hidden="true">&#x203A;</span></a></li>
 					<li><a href="../1226/index.html" aria-label="Next Unit"><span aria-hidden="true">&raquo;</span></a></li>
 				</ul>
@@ -449,8 +802,8 @@ ki vrne število dni med danima datumoma. (Predpostavi, da sta obe letnici ≥ 1
 <script src="index15.js"></script>
 <script>
   var elementID = "";
-  $("#runButton").click(function() {
-    elementID = "#output";
+  $("#runButton3").click(function() {
+    elementID = "#output3";
   });
   window.alert = function(msg) {
     $(elementID).append(msg + "\n");

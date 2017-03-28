@@ -54,7 +54,7 @@ Blockly.Python.controls_for=function(a){var b=Blockly.Python.variableDB_.getName
 
 
 /*
- * Change how sublist ranges (uppor and lower index) work:
+ * Change how sublist ranges (upper and lower index) work:
  * =======================================================
  */
 
@@ -65,3 +65,17 @@ Blockly.Python.getAdjustedInt(a,"AT2",0,!0);Blockly.isNumber(String(a))?"0"==a&&
 TO:
 Blockly.Python.lists_getSublist=function(a){var b=Blockly.Python.valueToCode(a,"LIST",Blockly.Python.ORDER_MEMBER)||"[]",c=a.getFieldValue("WHERE1"),d=a.getFieldValue("WHERE2");switch(c){case "FROM_START":c=Blockly.Python.getAdjustedInt(a,"AT1");"0"==c&&(c="");break;case "FROM_END":c=Blockly.Python.getAdjustedInt(a,"AT1",1,!1);break;case "FIRST":c="";break;default:throw"Unhandled option (lists_getSublist)";}switch(d){case "FROM_START":a=Blockly.Python.getAdjustedInt(a,"AT2",0);break;case "FROM_END":a=
 Blockly.Python.getAdjustedInt(a,"AT2",0,!1);Blockly.isNumber(String(a))?"0"==a&&(a=""):(Blockly.Python.definitions_.import_sys="import sys",a+=" or sys.maxsize");break;case "LAST":a="";break;default:throw"Unhandled option (lists_getSublist)";}return[b+"["+c+" : "+a+"]",Blockly.Python.ORDER_MEMBER]};
+
+
+/*
+ * Change how substring ranges (upper and lower index) work:
+ * =========================================================
+ */
+
+FROM:
+Blockly.Python.text_getSubstring=function(a){var b=a.getFieldValue("WHERE1"),c=a.getFieldValue("WHERE2"),d=Blockly.Python.valueToCode(a,"STRING",Blockly.Python.ORDER_MEMBER)||"''";switch(b){case "FROM_START":b=Blockly.Python.getAdjustedInt(a,"AT1");"0"==b&&(b="");break;case "FROM_END":b=Blockly.Python.getAdjustedInt(a,"AT1",1,!0);break;case "FIRST":b="";break;default:throw"Unhandled option (text_getSubstring)";}switch(c){case "FROM_START":a=Blockly.Python.getAdjustedInt(a,"AT2",1);break;case "FROM_END":a=
+Blockly.Python.getAdjustedInt(a,"AT2",0,!0);Blockly.isNumber(String(a))?"0"==a&&(a=""):(Blockly.Python.definitions_.import_sys="import sys",a+=" or sys.maxsize");break;case "LAST":a="";break;default:throw"Unhandled option (text_getSubstring)";}return[d+"["+b+" : "+a+"]",Blockly.Python.ORDER_MEMBER]};
+
+TO:
+Blockly.Python.text_getSubstring=function(a){var b=a.getFieldValue("WHERE1"),c=a.getFieldValue("WHERE2"),d=Blockly.Python.valueToCode(a,"STRING",Blockly.Python.ORDER_MEMBER)||"''";switch(b){case "FROM_START":b=Blockly.Python.getAdjustedInt(a,"AT1");"0"==b&&(b="");break;case "FROM_END":b=Blockly.Python.getAdjustedInt(a,"AT1",1,!1);break;case "FIRST":b="";break;default:throw"Unhandled option (text_getSubstring)";}switch(c){case "FROM_START":a=Blockly.Python.getAdjustedInt(a,"AT2",0);break;case "FROM_END":a=
+Blockly.Python.getAdjustedInt(a,"AT2",0,!1);Blockly.isNumber(String(a))?"0"==a&&(a=""):(Blockly.Python.definitions_.import_sys="import sys",a+=" or sys.maxsize");break;case "LAST":a="";break;default:throw"Unhandled option (text_getSubstring)";}return[d+"["+b+" : "+a+"]",Blockly.Python.ORDER_MEMBER]};
