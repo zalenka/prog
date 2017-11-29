@@ -43,16 +43,17 @@
 				  <a href="#" data-toggle="collapse" data-target="#menu2" role="button" aria-expanded="false">Programiranje in algoritmi</a>
 				  <div id="menu2" class="collapse in">
 					<ul class="sidebar-subnav">
+					<li><a href="../1220/index.html">Uvod</a></li>
 					<li><a href="../1221/index.html">Osnovni koncepti programiranja</a></li>
 					<li><a href="../1222/index.html">Izdelava samostojnih programov in pogojni stavki</a></li>
 					<li><a href="../1223/index.html">Zanke</a></li>
 					<li><a href="../1224/index.html">Tabele</a></li>
 					<li class="active"><a href="../1225/index.html">Funkcije</a></li>
 					<li><a href="../1226/index.html">Nizi</a></li>
-					<li><a href="../1227/index.html">Risanje</a></li>
 					</ul>
 				  </div>
 				</li>
+				<li><a href="../editor.html">Urejevalnik</a></li>
 			</ul>
 		</div>
 		<!-- /#sidebar-wrapper -->
@@ -67,7 +68,7 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="../index.html">Vizualno programiranje</a>
+			<a class="navbar-brand" href="../index.html">Slikovno programiranje</a>
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav navbar-right">
@@ -123,7 +124,7 @@
 						659.2:004(075.3)(0.034.2)<br>
 						004(075.3)(0.034.2)<br>
 						<br>
-						RAČUNALNIŠTVO in informatika 1 [Elektronski vir] : e-učbenik za informatiko v gimnaziji / Gregor Anželj ... [et al.]. - El. knjiga. - Koper : Založba Univerze na Primorskem ; Ljubljana : Založba Fakulete za računalništvo in informatiko ; Maribor : Fakuleta za elektrotehniko, računalništvo in informatiko, 2015<br>
+						SLIKOVNO programiranje [Elektronski vir] : e-učbenik za uvod v programiranje / Gregor Anželj ... [et al.]. - El. knjiga. - Koper : Založba Univerze na Primorskem ; Ljubljana : Založba Fakulete za računalništvo in informatiko ; Maribor : Fakuleta za elektrotehniko, računalništvo in informatiko, 2017<br>
 						<br>
 						Način dostopa (URL): <a href="http://lusy.fri.uni-lj.si/ucbenik/">http://lusy.fri.uni-lj.si/ucbenik/</a><br>
 						<br>
@@ -814,6 +815,20 @@
 <link rel="stylesheet" href="../cc/cookiecuttr.css">
 <script type="text/javascript" src="../cc/google-analytics.js"></script>
 <script type="text/javascript" src="../cc/setup.cookiecuttr.js"></script>
+
+
+<script>
+document.body.addEventListener("keydown", function (event) {
+    var code = event.keyCode || event.which;
+    var alt  = event.altKey;
+    if (alt && code === 33 /* Alt+PgUp */) {
+        window.location.replace("../1225/index12.html");
+    }
+    if (alt && code === 34 /* Alt+PgDn */) {
+        window.location.replace("../1225/index14.html");
+    }
+});
+</script>
 
 </body>
 

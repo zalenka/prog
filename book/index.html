@@ -10,7 +10,7 @@
 	<meta name="author" content="">
 	<link rel="shortcut icon" href="favicon.ico" />
 
-	<title>PROG</title>
+	<title>Slikovno programiranje</title>
 
 	<!-- Bootstrap Core CSS -->
 	<link href="css/bootstrap.min.css" rel="stylesheet">
@@ -39,16 +39,17 @@
 				  <a href="#" data-toggle="collapse" data-target="#menu2" role="button" aria-expanded="false">Programiranje in algoritmi</a>
 				  <div id="menu2" class="collapse in">
 					<ul class="sidebar-subnav">
+					<li><a href="1220/index.html">Uvod</a></li>
 					<li><a href="1221/index.html">Osnovni koncepti programiranja</a></li>
 					<li><a href="1222/index.html">Izdelava samostojnih programov in pogojni stavki</a></li>
 					<li><a href="1223/index.html">Zanke</a></li>
 					<li><a href="1224/index.html">Tabele</a></li>
 					<li><a href="1225/index.html">Funkcije</a></li>
 					<li><a href="1226/index.html">Nizi</a></li>
-					<li><a href="1227/index.html">Risanje</a></li>
 					</ul>
 				  </div>
 				</li>
+				<li><a href="editor.html">Urejevalnik</a></li>
 			</ul>
 		</div>
 		<!-- /#sidebar-wrapper -->
@@ -63,7 +64,7 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="index.html">Vizualno programiranje</a>
+			<a class="navbar-brand" href="index.html">Slikovno programiranje</a>
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav navbar-right">
@@ -102,12 +103,48 @@
 			</div>
 		</div>
 
+		<!-- Modal (popup) window: Catalogue -->
+		<div id="catalogue" class="modal fade" role="dialog">
+			<div class="modal-dialog">
+
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">CIP - Kataložni zapis o publikaciji</h2>
+					</div>
+					<div class="modal-body">
+						CIP - Kataložni zapis o publikaciji<br>
+						Narodna in univerzitetna knjižnica, Ljubljana<br>
+						<br>
+						659.2:004(075.3)(0.034.2)<br>
+						004(075.3)(0.034.2)<br>
+						<br>
+						SLIKOVNO programiranje [Elektronski vir] : e-učbenik za uvod v programiranje / Gregor Anželj ... [et al.]. - El. knjiga. - Koper : Založba Univerze na Primorskem ; Ljubljana : Založba Fakulete za računalništvo in informatiko ; Maribor : Fakuleta za elektrotehniko, računalništvo in informatiko, 2017<br>
+						<br>
+						Način dostopa (URL): <a href="http://lusy.fri.uni-lj.si/ucbenik/">http://lusy.fri.uni-lj.si/ucbenik/</a><br>
+						<br>
+						ISBN 978-961-6984-12-6 (Založba Univerze na Primorskem, html)<br>
+						ISBN 978-961-6209-86-1 (Založba Fakulete za računalništvo in informatiko, html)<br>
+						ISBN 978-961-248-498-9 (Fakuleta za elektrotehniko, računalništvo in informatiko, html)<br>
+						<br>
+						1. Anželj, Gregor<br>
+						282126848<br>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Zapri</button>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
 		<!-- Page Content -->
 		<div id="page-content-wrapper">
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-md-12">
-						<center><a href="1101/index.html"><img src="cover.png" class="img-responsive" border="0"></a></center>
+						<center><a href="1220/index.html"><img src="cover.png" class="img-responsive" border="0"></a></center>
 					</div>
 				</div>
 			</div>
@@ -116,7 +153,7 @@
 			<div class="col-md-12">
 				<center>
 				<ul class="pagination">
-					<li class="next"><a href="1221/index.html">Naprej</a></li>
+					<li class="next"><a href="1220/index.html">Naprej</a></li>
 				</ul>
 				</center>
 			</div>
@@ -157,6 +194,20 @@ $(document).ready(function () {
 		cookieWhatAreLinkText: 'Kaj so piškotki?',
 		cookieNotificationLocationBottom: true
 	});	
+});
+</script>
+
+
+<script>
+document.body.addEventListener("keydown", function (event) {
+    var code = event.keyCode || event.which;
+    var alt  = event.altKey;
+    if (alt && code === 33 /* Alt+PgUp */) {
+        window.location.replace("");
+    }
+    if (alt && code === 34 /* Alt+PgDn */) {
+        window.location.replace("");
+    }
 });
 </script>
 

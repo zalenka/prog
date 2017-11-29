@@ -10,11 +10,10 @@
 	<meta name="author" content="">
 	<link rel="shortcut icon" href="../favicon.ico" />
 
-	<title>Sprehod po indeksih tabele</title>
+	<title>Uvod</title>
 
 	<!-- Bootstrap Core CSS -->
 	<link href="../css/bootstrap.min.css" rel="stylesheet">
-
 	<!-- Custom CSS -->
 	<link href="../css/simple-sidebar.css" rel="stylesheet">
 	<link href="../css/font-awesome.min.css" rel="stylesheet">
@@ -40,11 +39,11 @@
 				  <a href="#" data-toggle="collapse" data-target="#menu2" role="button" aria-expanded="false">Programiranje in algoritmi</a>
 				  <div id="menu2" class="collapse in">
 					<ul class="sidebar-subnav">
-					<li><a href="../1220/index.html">Uvod</a></li>
+					<li class="active"><a href="../1220/index.html">Uvod</a></li>
 					<li><a href="../1221/index.html">Osnovni koncepti programiranja</a></li>
 					<li><a href="../1222/index.html">Izdelava samostojnih programov in pogojni stavki</a></li>
 					<li><a href="../1223/index.html">Zanke</a></li>
-					<li class="active"><a href="../1224/index.html">Tabele</a></li>
+					<li><a href="../1224/index.html">Tabele</a></li>
 					<li><a href="../1225/index.html">Funkcije</a></li>
 					<li><a href="../1226/index.html">Nizi</a></li>
 					</ul>
@@ -121,7 +120,7 @@
 						659.2:004(075.3)(0.034.2)<br>
 						004(075.3)(0.034.2)<br>
 						<br>
-						SLIKOVNO programiranje [Elektronski vir] : e-učbenik za uvod v programiranje / Gregor Anželj ... [et al.]. - El. knjiga. - Koper : Založba Univerze na Primorskem ; Ljubljana : Založba Fakulete za računalništvo in informatiko ; Maribor : Fakuleta za elektrotehniko, računalništvo in informatiko, 2017<br>
+						VIZUALNO programiranje [Elektronski vir] : e-učbenik za učenje programiranja / Gregor Anželj ... [et al.]. - El. knjiga. - Koper : Založba Univerze na Primorskem ; Ljubljana : Založba Fakulete za računalništvo in informatiko ; Maribor : Fakuleta za elektrotehniko, računalništvo in informatiko, 2017<br>
 						<br>
 						Način dostopa (URL): <a href="http://lusy.fri.uni-lj.si/ucbenik/">http://lusy.fri.uni-lj.si/ucbenik/</a><br>
 						<br>
@@ -140,139 +139,20 @@
 			</div>
 		</div>
 
-		<!-- Modal (popup) window: Hint 1 -->
-		<div id="hint1" class="modal fade" role="dialog">
-			<div class="modal-dialog">
-
-				<!-- Modal content-->
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h4 class="modal-title">Namig</h4>
-					</div>
-					<div class="modal-body">
-						<p align="justify">Najprej poišči najmanjši element tabele.</p>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">Zapri</button>
-					</div>
-				</div>
-
-			</div>
-		</div>
-
-		<!-- Modal (popup) window: Hint 2 -->
-		<div id="hint2" class="modal fade" role="dialog">
-			<div class="modal-dialog">
-
-				<!-- Modal content-->
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h4 class="modal-title">Namig</h4>
-					</div>
-					<div class="modal-body">
-						<p align="justify">Nato se sprehodi po indeksih tabele in vsakokrat preveri, ali je element na trenutnem indeksu enak najmanjšemu elementu tabele. Če je, izpiši trenutni indeks.</p>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">Zapri</button>
-					</div>
-				</div>
-
-			</div>
-		</div>
-
-		<!-- Modal (popup) window: Solution 1 -->
-		<div id="solution1" class="modal fade" role="dialog">
-			<div class="modal-dialog">
-
-				<!-- Modal content-->
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h4 class="modal-title">Rešitev</h4>
-					</div>
-					<div class="modal-body">
-<pre>
-# Program izpiše indekse vseh najmanjših elementov v podani tabeli.
-tabela = [30, 20, 20, 80, 20, 40]
-
-# Določimo najmanjši element.
-najmanjsi = tabela[0]
-for element in tabela:
-  if element &lt; najmanjsi:
-    najmanjsi = element
-
-# Sprehodimo se po indeksih tabele in vsakokrat pogledamo, ali je element
-# na trenutnem indeksu enak najmanjšemu elementu tabele. Če je, izpišemo
-# trenutni indeks.
-for indeks in range(len(tabela)):
-  if tabela[indeks] == najmanjsi:
-    print(indeks)
-</pre>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">Zapri</button>
-					</div>
-				</div>
-
-			</div>
-		</div>
-
 		<!-- Page Content -->
 		<div id="page-content-wrapper">
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-md-6">
 <!-- Left column start -->
-<h4>Vaja</h4>
-
-<div class="alert alert-info" role="alert">
-<p align="justify">Napiši program, ki za podano tabelo izpiše indekse vseh najmanjših elementov (če jih je več). Na primer, za tabelo <code>[30, 20, 20, 80, 20, 40]</code> naj program izpiše indekse 1, 2 in 4.</p>
-<p>
-<button type="button" class="btn btn-info" data-toggle="modal" data-target="#hint1"><span class="fa fa-question"></span> Namig 1</button>
-<button type="button" class="btn btn-info" data-toggle="modal" data-target="#hint2"><span class="fa fa-question"></span> Namig 2</button>
-<button type="button" class="btn btn-info" data-toggle="modal" data-target="#solution1"><span class="fa fa-check"></span> Rešitev</button>
-</p>
-</div>
-
-<h1>Spreminjanje, dodajanje in odstranjevanje elementov</h1>
-
-<p align="justify">Element lahko dodamo na konec tabele, ali pa ga vstavimo pred element s podanim indeksom:
-<pre>
-<img src="img/1224-10-2.png">
-</pre>
-Izpis:
-<pre>
-[10, 20, 30, 40, 100]
-[10, 60, 20, 30, 40, 100]
-</pre>
-</p>
+<h1>Uvod</h1>
+ 
+<p align="justify">Še manjka...</p>
 <!-- Left column end -->
 					</div>
 					<div class="col-md-6">
-                        <br />
+						<br />
 <!-- Right column start -->
-<p align="justify">Element na nekem indeksu v tabeli spremenimo s preprostim prirejanjem:
-<pre>
-<img src="img/1224-10-1.png">
-</pre>
-Izpis:
-<pre>
-[1, 10, 3, 4]
-</pre>
-</p>
-
-<br />
-<p align="justify">Element lahko iz tabele tudi odstranimo:
-<pre>
-<img src="img/1224-10-3.png">
-</pre>
-Izpis:
-<pre>
-[30, 80, 60, 70, 50]
-</pre>
-</p>
 <!-- Right column end -->
 					</div>
 				</div>
@@ -282,26 +162,11 @@ Izpis:
 			<div class="col-md-12">
 				<center>
 				<ul class="pagination pagination-sm">
-					<li><a href="../1223/index.html" aria-label="Previous Unit"><span aria-hidden="true">&laquo;</span></a></li>
-					<li><a href="../1224/index9.html" aria-label="Previous Page"><span aria-hidden="true">&#x2039;</span></a></li>
-					<li><a href="../1224/index.html">37</a></li>
-					<li><a href="../1224/index1.html">38</a></li>
-					<li><a href="../1224/index2.html">39</a></li>
-					<li><a href="../1224/index3.html">40</a></li>
-					<li><a href="../1224/index4.html">41</a></li>
-					<li><a href="../1224/index5.html">42</a></li>
-					<li><a href="../1224/index6.html">43</a></li>
-					<li><a href="../1224/index7.html">44</a></li>
-					<li><a href="../1224/index8.html">45</a></li>
-					<li><a href="../1224/index9.html">46</a></li>
-					<li class="active"><a href="#">47</a></li>
-					<li><a href="../1224/index11.html">48</a></li>
-					<li><a href="../1224/index12.html">49</a></li>
-					<li><a href="../1224/index13.html">50</a></li>
-					<li><a href="../1224/index14.html">51</a></li>
-					<li><a href="../1224/index15.html">52</a></li>
-					<li><a href="../1224/index11.html" aria-label="Next Page"><span aria-hidden="true">&#x203A;</span></a></li>
-					<li><a href="../1225/index.html" aria-label="Next Unit"><span aria-hidden="true">&raquo;</span></a></li>
+					<li><a href="../index.html" aria-label="Previous Unit"><span aria-hidden="true">&laquo;</span></a></li>
+					<li><a href="../index.html" aria-label="Previous Page"><span aria-hidden="true">&#x2039;</span></a></li>
+					<li class="active"><a href="#">0</a></li>
+					<li><a href="../1221/index.html" aria-label="Next Page"><span aria-hidden="true">&#x203A;</span></a></li>
+					<li><a href="../1222/index.html" aria-label="Next Unit"><span aria-hidden="true">&raquo;</span></a></li>
 				</ul>
 				</center>
 			</div>
@@ -348,10 +213,10 @@ document.body.addEventListener("keydown", function (event) {
     var code = event.keyCode || event.which;
     var alt  = event.altKey;
     if (alt && code === 33 /* Alt+PgUp */) {
-        window.location.replace("../1224/index9.html");
+        window.location.replace("../index.html");
     }
     if (alt && code === 34 /* Alt+PgDn */) {
-        window.location.replace("../1224/index11.html");
+        window.location.replace("../1221/index.html");
     }
 });
 </script>
