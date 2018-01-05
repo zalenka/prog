@@ -155,8 +155,14 @@
     <td id="tab1_python" class="taboff">Python</td>
     <td class="tabmin">&nbsp;</td>
     <td class="tabmax" align="right">
-      <button type="button" class="btn btn-primary"  id="runButton"><span class="fa fa-play"></span> Izvedi</button>
-      <button type="button" class="btn btn-primary"  id="trashButton">Počisti</button>
+      <button type="button" class="btn btn-primary" id="runButton"><span class="fa fa-play"></span> Izvedi</button>
+      <button type="button" class="btn btn-primary" id="trashButton">Počisti</button>
+      <div class="btn-group" role="group" aria-label="...">
+        <label class="btn btn-primary btn-file">
+          <span class="fa fa-upload"></span> Naloži <input type="file" id="loadButton" accept=".blockly" style="display: none;">
+        </label>
+        <button type="button" class="btn btn-primary" id="saveButton"><span class="fa fa-download"></span> Shrani</button>
+      </div>
     </td>
   </tr>
   <tr>
@@ -417,9 +423,53 @@
   $("#runButton").click(function() {
     elementID = "#output";
   });
+
   window.alert = function(msg) {
     $(elementID).append(msg + "\n");
   };
+
+  $("#saveButton").click(function() {
+    var workspace = Blockly.getMainWorkspace();
+    if (workspace != null) {
+      var xml = Blockly.Xml.workspaceToDom(workspace);
+      var data = Blockly.Xml.domToText(xml);
+      // TODO: fix browserify so that this call works
+      // saveToFile('program.blockly', xml);
+      var blob = new Blob([data], {type: 'text/xml'});
+      var filename = 'program.blockly';
+      if (window.navigator.msSaveOrOpenBlob) {
+        window.navigator.msSaveBlob(blob, filename);
+      }
+      else {
+        var elem = window.document.createElement('a');
+        elem.href = window.URL.createObjectURL(blob);
+        elem.download = filename;
+        document.body.appendChild(elem);
+        elem.click();
+        document.body.removeChild(elem);
+        window.URL.revokeObjectURL(blob);
+      }
+    }
+  });
+
+  function uploadBlocklyWorkspace(event) {
+    var file = event.target.files[0];
+    var reader = new FileReader();
+    reader.onload = function(e) {
+      var xmlText = reader.result;
+      var workspace = Blockly.getMainWorkspace();
+      if (workspace != null) {
+        workspace.clear();
+        var xml = Blockly.Xml.textToDom(xmlText);
+        // NOTE: documentation at https://developers.google.com/blockly/guides/get-started/web
+        // is wrong! The parameters for domToWorkspace() should be workspace, then xml.
+        Blockly.Xml.domToWorkspace(workspace, xml);
+      }
+    };
+    reader.readAsText(file);
+  }
+  document.getElementById("loadButton").addEventListener("change", uploadBlocklyWorkspace, false);
+
 </script>
 
 
